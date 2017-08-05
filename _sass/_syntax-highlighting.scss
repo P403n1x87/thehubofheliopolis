@@ -2,7 +2,7 @@
  * Syntax highlighting styles
  */
 .highlight {
-    box-shadow: 0 0 16px $grey-color-dark;
+    box-shadow: 0 0 16px darken(#eef, 10);
     border-radius: 4px;
     background: #fff;
     width: 95%;
@@ -75,7 +75,7 @@
 }
 
 .terminal {
-  box-shadow: 0 0 16px $grey-color-dark;
+  box-shadow: 0 0 12px darken(#efa, 60);
   border-radius: 4px;
   background: #fff;
   width: 95%;
@@ -87,6 +87,7 @@
 
 .terminal pre {
   background-color: inherit;
+  color: #efa;
   border: none;
   max-height:256px;
   overflow: auto;
