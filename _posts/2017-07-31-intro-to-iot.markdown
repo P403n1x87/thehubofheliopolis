@@ -280,7 +280,7 @@ class Index(object):
         return templ('index', state = "on" if led.state else "off")
 {% endhighlight %}
 
-In fact, this module looks more like a view rather than a controller, as the actual code for controlling the LED is buried in the `led` module that we have analysed previously. The `util.py` module contains some helper functions to conveniently deal with HTML templates and query strings. We refrain from showing the code in this post, but you can find it in the dedicated GitHub repository. TODO: Add link to repository!!
+In fact, this module looks more like a view rather than a controller, as the actual code for controlling the LED is buried in the `led` module that we have analysed previously. The `util.py` module contains some helper functions to conveniently deal with HTML templates and query strings. We refrain from showing the code in this post, but you can find it in the [dedicated GitHub repository](https://github.com/P403n1x87/led_app).
 
 The HTML template contained in the `index.html` file is very simple and looks like this.
 
