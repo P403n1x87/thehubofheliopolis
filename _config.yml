@@ -1,0 +1,20 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: The Hub of Heliopolis
+email: phoenix1987@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  The Hub of Heliopolis is the _tech bay_ of <a href="http://thenestofheliopolis.blogspot.co.uk/">The Nest of Heliopolis</a>.
+  It is the home of all my experiences with technology that I consider worth
+  sharing to the World.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://p403n1x87.github.io/" # the base hostname & protocol for your site
+github_username:  P403n1x87
+
+# Build settings
+markdown: kramdown
