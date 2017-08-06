@@ -1,0 +1,22 @@
+language: ruby
+rvm:
+- 2.3.3
+
+script: ./script/cibuild
+
+env:
+  global:
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+
+sudo: false # route your build to the container-based infrastructure for a faster build
+
+# Deployment to gh-pages
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  repo: P403n1x87/P403n1x87.github.io
+  target_branch: master
+  local_dir: _site
+  on:
+    branch: master

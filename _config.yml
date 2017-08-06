@@ -20,4 +20,4 @@ github_username:  P403n1x87
 markdown: kramdown
 
 #
-exclude: [build, serve]
+exclude: [build, serve, vendor]
