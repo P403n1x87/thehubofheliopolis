@@ -1,38 +1,41 @@
 /**
+ * Home
+ */
+
+.home {
+  padding-left: 2 * $spacing-unit;
+  padding-right: 2 * $spacing-unit;
+}
+
+/**
  * Site header
  */
 .site-header {
-    background-image:url('../images/header.svg');
+    //background-image:url('../images/header.svg');
     background-repeat: no-repeat;
     background-size: 100%;
-    // background-position: 50% 50%;
-    background-attachment: fixed;
-    box-shadow: 0 -20px 100px #000000 inset;
+    box-shadow: 0 10px 16px #000000;
 
-    // border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
     min-width: 440px;
 
-    height: 240px;
-    // Positioning context for the mobile navigation icon
     position: relative;
 }
 
 .site-title {
     font-size: 48px;
     font-weight: 300;
-    line-height: 56px;
+    font-family: "Cinzel";
     letter-spacing: -1px;
+    margin-left:24px;
     margin-bottom: 0;
-    float: left;
+    text-align: center;
+    bottom: 10px;
 
     &,
     &:visited {
         color: white; // $grey-color-dark;
     }
 
-    position: absolute;
-    bottom: 10px;
 }
 
 .site-nav {
@@ -109,15 +112,16 @@
  * Site footer
  */
 .site-footer {
-    border-top: 1px solid $grey-color-light;
     padding: $spacing-unit 0;
     background-color: #111111;
     color: #EEEEEE;
+    box-shadow: 0 -10px 16px #000;
 }
 
 .footer-heading {
     font-size: 18px;
     margin-bottom: $spacing-unit / 2;
+    font-family: "Cinzel";
 }
 
 .contact-list,
@@ -154,6 +158,12 @@
     width:         calc(45% - (#{$spacing-unit} / 2));
 }
 
+.footer-copyright {
+  color: $grey-color-dark;
+  font-size: small;
+  text-align: center;
+}
+
 @include media-query($on-laptop) {
     .footer-col-1,
     .footer-col-2 {
@@ -181,11 +191,25 @@
  * Page content
  */
 .page-content {
-    padding: $spacing-unit 0;
+    background-image: url('../images/logo_bg.svg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center top;
 }
 
 .page-heading {
     font-size: 20px;
+    text-align: center;
+    display: block;
+    background-color: rgba(30, 10, 10, .95);
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: $spacing-unit;
+    padding-top:$spacing-unit;
+    padding-bottom: 12px;
+    max-width: 80%;
+    font-family: "Cinzel";
 }
 
 .post-list {
@@ -198,13 +222,15 @@
 }
 
 .post-meta {
-    font-size: $small-font-size;
-    color: $grey-color;
+    font-family: 'Passion One', cursive;
+    color: darken(blue, 32);
 }
 
 .post-link {
     display: block;
-    font-size: 24px;
+    font-size: 18px;
+    color: white;
+    font-family: "Lato";
 }
 
 
@@ -212,13 +238,61 @@
 /**
  * Posts
  */
+
+.post {
+  background-color: #1a1a20;
+  box-shadow: #000 0 0 16px;
+  border-radius: 0 0 8px 8px;
+}
+
+ul .post {
+  background:rgba(8, 8, 16, 0.97);
+
+  .post-header {
+    padding-left: $spacing-unit;
+    padding-right: $spacing-unit;
+    padding-top: .5*$spacing-unit;
+    padding-bottom: .5*$spacing-unit;
+    font-size: 80%;
+    line-height: 1;
+    margin-top: 0;
+  }
+
+  .post-info {
+    padding: 0.5 * $spacing-unit $spacing-unit .5* $spacing-unit $spacing-unit;
+  }
+
+  .post-excerpt {
+    padding: .5*$spacing-unit $spacing-unit .5*$spacing-unit $spacing-unit;
+    display: block;
+    text-align: justify;
+    font-size: 80%;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: normal;
+    background-color: #1a1a20;
+    box-shadow: 0 16px 16px -4px black;
+
+    p {
+      margin: 0;
+    }
+  }
+
+
+  h2 {
+    margin: 0;
+  }
+}
+
 .post-header {
-    margin-bottom: $spacing-unit;
+    background-color: lighten(blue, 16);
+    padding: $spacing-unit 2*$spacing-unit .5*$spacing-unit 2*$spacing-unit;
+    margin-top: $spacing-unit;
 }
 
 .post-title {
-    font-size: 42px;
-    letter-spacing: -1px;
+    font-size: 36px;
+    font-family: 'Noto Sans', sans-serif;
     line-height: 1;
 
     @include media-query($on-laptop) {
@@ -226,7 +300,23 @@
     }
 }
 
+.post-excerpt {
+  padding: $spacing-unit 2*$spacing-unit .5*$spacing-unit 2*$spacing-unit;
+  display: block;
+  text-align: justify;
+  font-size: 125%;
+  font-family: "Lora";
+  font-style: italic;
+  font-weight: bold;
+  background-color: #1a1a20;
+
+  p {
+    margin: 0;
+  }
+}
+
 .post-content {
+    padding: $spacing-unit 2*$spacing-unit $spacing-unit 2*$spacing-unit;
     margin-bottom: $spacing-unit;
     text-align: justify;
 
@@ -262,4 +352,29 @@
             font-size: 18px;
         }
     }
+}
+
+.post-info {
+  font-size: 70%;
+  font-family: "Comfortaa";
+  border-radius: 0 0 8px 8px;
+}
+
+/**
+ * Categories and labels
+ */
+.label {
+  font-family: 'Share Tech Mono', monospace;
+  border-radius: 4px;
+  background-color: darken(grey, 30);
+  color: lighten(grey, 20);
+  padding: 3px 6px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  white-space: pre;
+  display: inline-block;
+}
+
+.post-attr-table td {
+  vertical-align: top;
 }

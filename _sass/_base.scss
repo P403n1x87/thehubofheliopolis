@@ -83,7 +83,7 @@ li {
  */
 h1, h2, h3, h4, h5, h6 {
     font-weight: $base-font-weight;
-    text-shadow: 0px 0px 16px #AAAAAA;
+    font-family: "Anton";
 }
 
 h1 {
@@ -100,13 +100,10 @@ h2 {
 a {
     color: $brand-color;
     text-decoration: none;
-
-    &:visited {
-        color: darken($brand-color, 15%);
-    }
-
+    transition: text-shadow .2s;
     &:hover {
         color: $text-color;
+        text-shadow: 0 0 8px lighten($brand-color, 50%);
     }
 }
 
@@ -135,10 +132,9 @@ blockquote {
  */
 pre,
 code {
-    //font-size: 95%; // 15px;
-    border: 1px solid $grey-color-light;
+    font-size: 90%;
     border-radius: 3px;
-    background-color: #eef;
+    background-color: #0f0f1f;
     font-family: 'Share Tech Mono', monospace;
 }
 
@@ -163,12 +159,10 @@ pre {
  * Wrapper
  */
 .wrapper {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+    max-width: $content-width;//-webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
+    max-width: $content-width;//        calc(#{$content-width} - (#{$spacing-unit} * 2));
     margin-right: auto;
     margin-left: auto;
-    padding-right: $spacing-unit;
-    padding-left: $spacing-unit;
     @extend %clearfix;
 
     @include media-query($on-laptop) {
@@ -213,9 +207,8 @@ pre {
 }
 
 #markdown-toc {
-  background-color: #eef;
   list-style-position: inside;
-  padding:12px;
+  padding: 12px;
   padding-left: 24px;
   margin: 24px;
 }

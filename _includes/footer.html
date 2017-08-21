@@ -7,7 +7,7 @@
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li>{{ site.title }}</li>
+          <li>{{ site.title }} is maintained by {{ site.author }}</li>
           <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
         </ul>
       </div>
@@ -25,12 +25,20 @@
             {% include icon-twitter.html username=site.twitter_username %}
           </li>
           {% endif %}
+
+          <li>
+            <a href="{{ "/feed.xml" | prepend: site.baseurl }}"><i class="fa fa-rss-square" aria-hidden="true"></i> Subscribe</a>
+          </li>
         </ul>
       </div>
 
       <div class="footer-col footer-col-3">
         <p>{{ site.description }}</p>
       </div>
+    </div>
+
+    <div class="footer-copyright">
+      Copyright (C) {{ site.start-year}} {{ site.author }}. All rights reserved.
     </div>
 
   </div>

@@ -7,11 +7,13 @@
 
 # Site settings
 title: The Hub of Heliopolis
+author: Gabriele N. Tornetta
 email: phoenix1987@gmail.com
+start-year: 2017
 description: > # this means to ignore newlines until "baseurl:"
-  The Hub of Heliopolis is the _tech bay_ of <a href="http://thenestofheliopolis.blogspot.co.uk/">The Nest of Heliopolis</a>.
-  It is the home of all my experiences with technology that I consider worth
-  sharing to the World.
+  The Hub of Heliopolis is the <i>tech bay</i> of <a href="http://thenestofheliopolis.blogspot.co.uk/">The Nest of Heliopolis</a>.
+  It is the home of all my <i>encounters</i> with technology that I consider worth
+  sharing with the World.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://p403n1x87.github.io/" # the base hostname & protocol for your site
 github_username:  P403n1x87
@@ -20,4 +22,4 @@ github_username:  P403n1x87
 markdown: kramdown
 
 #
-exclude: [build, serve, vendor]
+exclude: [build, serve, vendor, Gemfile*]
