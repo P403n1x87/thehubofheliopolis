@@ -240,14 +240,14 @@
  */
 
 .post {
-  background-color: #1a1a20;
+  background:rgba(8, 8, 16, 0.97);
   box-shadow: #000 0 0 16px;
   border-radius: 0 0 8px 8px;
+  margin-top: $spacing-unit;
+  margin-bottom: $spacing-unit;
 }
 
 ul .post {
-  background:rgba(8, 8, 16, 0.97);
-
   .post-header {
     padding-left: $spacing-unit;
     padding-right: $spacing-unit;
@@ -287,7 +287,7 @@ ul .post {
 .post-header {
     background-color: lighten(blue, 16);
     padding: $spacing-unit 2*$spacing-unit .5*$spacing-unit 2*$spacing-unit;
-    margin-top: $spacing-unit;
+    // margin-top: $spacing-unit;
 }
 
 .post-title {
@@ -317,8 +317,9 @@ ul .post {
 
 .post-content {
     padding: $spacing-unit 2*$spacing-unit $spacing-unit 2*$spacing-unit;
-    margin-bottom: $spacing-unit;
     text-align: justify;
+    background-color: #1a1a20;
+    box-shadow: 0 8px 16px -4px black;
 
     h1 {
         font-size: 200%;
@@ -363,14 +364,26 @@ ul .post {
 /**
  * Categories and labels
  */
-.label {
+
+.category {
+  border-radius: 12px;
+  background-color: #302030;
+  color: lighten(grey, 20);
+  padding: 2px 12px;
+  margin-right: 4px;
+  margin-bottom: 2px;
+  white-space: pre;
+  display: inline-block;
+}
+
+.tag {
   font-family: 'Share Tech Mono', monospace;
   border-radius: 4px;
   background-color: darken(grey, 30);
   color: lighten(grey, 20);
-  padding: 3px 6px;
+  padding: 2px 6px;
   margin-right: 4px;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   white-space: pre;
   display: inline-block;
 }

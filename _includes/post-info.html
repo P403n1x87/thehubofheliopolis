@@ -7,13 +7,13 @@
     <tr>
       <td><i class="fa fa-archive" aria-hidden="true"></i></td>
       <td>
-        {% for cat in post.categories %}<span class="label">{{ cat }}</span>{% endfor %}
+        {% for cat in post.categories %}<span class="category">{{ cat }}</span>{% endfor %}
       </td>
     </tr>
     <tr>
       <td><i class="fa fa-tags" aria-hidden="true"></i></td>
       <td>
-        {% for tag in post.tags %}<span class="label">{{ tag }}</span>{% endfor %}
+        {% for tag in post.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
       </td>
     </tr>
   </table>
