@@ -1,0 +1,9 @@
+<form class="comment" method="post" action="">
+  <input type="text" name="fields[name]"  placeholder="Name"/>
+  <input type="text" name="fields[email]" placeholder="E-mail address"/>
+  <textarea name="fields[comment]" rows="5" placeholder="Write your comment here. You can use markdown and LaTeX (use $...$ to inline)"></textarea>
+
+   <input type="submit" class="flat_button" value="SUBMIT FOR APPROVAL">
+
+   <input type="hidden" name="fields[pic]" value="{{ page.pic }}">
+</form>

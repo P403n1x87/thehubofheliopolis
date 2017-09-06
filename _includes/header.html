@@ -1,8 +1,15 @@
 <header class="site-header">
-  <img src="{{ site.url }}/images/logo.svg" height="160px" style="margin:auto;display:block;padding-top:12px;"/>
+  <table>
+    <tr>
+      <td>
+        <img src="{{ site.url }}/images/logo.svg" height="96px" style="margin-left: 24px;"/>
+      </td>
+      <td>
+        <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+      </td>
+    </tr>
+  </table>
   <div class="wrapper">
-    <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
-
     <nav class="site-nav">
       <a href="#" class="menu-icon">
         <svg viewBox="0 0 18 15">
