@@ -1,31 +1,43 @@
 ---
-layout:     post
-title:      "Getting Started with x86-64 Assembly on Linux"
-date:       2016-08-10 15:48:37 +0100
+pic    : x86_64-asm-101
+layout : post
+title  : Getting Started with x86-64 Assembly on Linux
+author : Gabriele N. Tornetta
+date   : 2016-08-10 15:48:37 +0100
+
 categories:
   - Assembly
   - x86_64
+
 tags:
   - Programming
   - Assembly
   - x86_64
-exceprt: 'In this post we will learn how to assemble and link a simple "Hello World" application written in x86-64 assembly for the Linux operating system.'
+
+excerpt: >
+  You have experience of x86 assembly and you wonder what the fundamental
+  architectural differences with the 64 bit Intel architecture are? Then this
+  post might be what you are looking for. Here we'll see how to use the Netwide
+  Assembler (NASM) to write a simple Hello World application in x86_64 assembly.
+  Along the way, we will also have the chance to see how to use some standard
+  tools to optimise the final executable by stripping out unnecessary debug
+  symbols.
 ---
 
 In this post we will learn how to assemble and link a simple "Hello World" application written in x86-64 assembly for the Linux operating system. If you have experience with Intel IA-32 assembly and you want to quickly get adjusted to the x86-64 world then this post is for you. If you're trying to learn the assembly language from scratch then I'm afraid this post is not for you. There are many great resources online on 32-bit assembly. One of my favourite documents is Paul Carter's PC Assembly Language, which I highly recommend if you're moving your first steps into the assembly language. If you then decide to come back to this post, you should be able to read it with no problems, since the tools that I will employ here are the same used in Carter's book.
 
-**Table of Contents**
+<h4>Table of Contents</h4>
 * Table of Contents
 {:toc}
 
 
-## Overview
+# Overview
 
 This post is organised as follows. In the next section, I gather some details about the tools that we will use to code, assemble, link and execute the applications. As already mentioned above, most of the tools are the same as those used in Carter's book. Our assembler (and hence the syntax) will be NASM. I will make use of two linkers, `ld` and the one that comes with `gcc`, the GNU C Compiler, for reasons that will be explained later. The first x64 application that we will code will give us the chance to get familiar with the new system calls and how they differ from the 32-bit architecture. With the second one we will make use of the Standard C Library. Both examples will give us the chance to explore the x86-64 calling convention as set out in the [System V Application Binary Interface](http://www.x86-64.org/documentation/abi.pdf).
 
 All the code shown in this post will also be available from the [dedicated asm GitHub repository](https://github.com/P403n1x87/asm/tree/master/hello64).
 
-## Tools
+# Tools
 
 The Netwide Assembler is arguably the most popular assembler for the Linux Operating System and it is an open-source project. Its documentation is nicely written and explains all the features of the language and of the (dis)assembler. This post will try to be as much self-contained as possible, but whenever you feel the need to explore something a bit more, the NASM documentation will probably be the right place. To assemble a 64-bit application we will need to use the command
 
@@ -55,7 +67,7 @@ gcc -o myapp.o myapp
 
 which is very much similar to `ld`.
 
-## Hello Syscalls!
+# Hello Syscalls!
 
 In this first example we will make use of the Linux system calls to print the string `Hello World!` to the screen. Here is where we encounter a major difference between the 32-bit and the 64-bit Linux world.
 
@@ -117,7 +129,7 @@ Here is our first encounter with the new syscall opcode and the x86_64 calling c
 
 On line 23 we have a comment that shows us the equivalent C code for a call to sys_write. Its "signature" is the following.
 
-<div style="background-color: #eef;padding:12px;margin:12px;">
+<div style="background-color: #202000;padding:24px;margin:12px;font-size:80%;">
   <table>
     <tbody>
       <tr>
@@ -162,7 +174,7 @@ In order to make the actual system call we can now use the new opcode `syscall`.
 
 Since the application has done everything that needed to be done, i.e. print a string to standard output, we are ready to terminate the execution of the main process. This is achieved by making the exit system call, whose "signature" is the following.
 
-<div style="background-color: #eef;padding:12px;margin:12px;">
+<div style="background-color: #202000;padding:24px;margin:12px;font-size:80%;">
   <table>
     <tbody>
       <tr>
@@ -344,7 +356,7 @@ $ ldd hello64
 
 In this case, this output is telling us that `hello64` is not linked to any other shared object files.
 
-## Hello libc!
+# Hello libc!
 
 We shall now rewrite the above Hello World! example and let the Standard C Library take care of the output operation. That is, we won't deal with system calls directly, we shall instead delegate a higher abstraction layer, the Standard C Library, do that for us. Furthermore, with this approach, we will also delegate some basic clean-up involving, e.g., open file descriptor, child processes etc..., which we would have to deal with otherwise. For a simple application like a Hello World! this last point is pretty much immaterial, but we will see in another post on GUIs with Gtk+ 3 the importance of waiting for child processes to terminate an application gracefully.
 
@@ -481,6 +493,6 @@ strip -R .hash -R .gnu.version -R .eh_frame hello64_libc2
 
 which yields an executable of 1832 bytes.
 
-## Conclusions
+# Conclusions
 
 With the above examples, we have seen that, if our real goal is that of coding a Hello World application meant to run on an architecture with the x86_64 instruction set, assembly is the best shot we have. Chances are, if you are coding an application, it is more complex than just printing a string on screen. Even pretending for a moment that you don't care about the portability of your code, there are certainly some benefits from linking your application with gcc and letting the Standard C Library do some clean-up work for you. We will have the chance to see this last point from a close-up perspective in a future post. So take this current post as a reference point where you can look back when you need to recall the basics of writing a 64-bit assembly application for the Linux OS.

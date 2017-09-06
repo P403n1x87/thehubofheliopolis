@@ -1,10 +1,14 @@
 ---
-layout:     post
-title:      "A Gentle Introduction to IoT"
-date:       2017-07-31 19:30:15 +0100
+pic    : intro-iot
+layout : post
+title  : A Gentle Introduction to IoT
+author : Gabriele N. Tornetta
+date   : 2017-07-31 19:30:15 +0100
+
 categories:
   - Raspberry Pi
   - IoT
+
 tags:
   - Electronics
   - Programming
@@ -13,12 +17,21 @@ tags:
   - Apache
   - Raspberry Pi
   - WSGI
-exceprt: 'I will try to introduce the fundamental concepts of IoT by an hands-on example.'
+
+excerpt: >
+  The IoT revolution has started. But what is it exactly? Is it hard to take
+  part to it? In this post I present you with all the details of a very simple
+  and almost inexpensive <i>Internet of Things</i> project. Read through as we
+  go from assembling the required hardware, to coding the software that will
+  drive it, exploring some of the most modern free technologies that are on
+  offer today. At the end we will be able to take control of some LEDs over the
+  internet, from wherever we are. Consider this as a launch pad to more complex
+  and exciting IoT projects.
 ---
 
 ![IoT everywhere]({{ site.url }}/images/iot/iot.jpg){: .center-image }
 
-**Contents**
+<h4>Table of Contents</h4>
 * Table of Contents
 {:toc}
 
