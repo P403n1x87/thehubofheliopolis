@@ -1,6 +1,11 @@
 .comments {
   padding: $spacing-unit 2*$spacing-unit $spacing-unit 2*$spacing-unit;
   font-size: 80%;
+
+  h2 {
+    font-size: 100%;
+    margin-top:24px;
+  }
 }
 
 .comment-list {
@@ -31,4 +36,33 @@
     margin-left: 4px;
     margin-right: 12px;
   }
+}
+
+.comment input, textarea {
+  display: block;
+  width: 512px;
+  padding: 12px;
+  margin:auto;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  background: transparent;
+  border: 3px solid grey;
+  color: white;
+}
+
+.flat_button {
+  border: 2px solid green !important;
+  background-color: white !important;
+  color: green !important;
+  border-radius: 6px;
+  padding: 24px !important;
+  width: auto !important;
+  font-family: "Comfortaa";
+  margin-top: 24px !important;
+  transition: background-color 300ms;
+}
+
+.flat_button:hover {
+  background-color: green !important;
+  color: white !important;
 }

@@ -1,5 +1,6 @@
 <div class="comments">
   <h1>Comments</h1>
+
   {% if site.data.comments != null %}
     {% assign comments = site.data.comments | sort %}
     {% assign cnt = 0 %}
@@ -28,4 +29,9 @@
   {% else %}
     No comments yet. Be the first to leave one!
   {% endif %}
+
+  <!-- Uncomment when support for adding comments has been finalised -->
+  <!-- <h2>Leave a comment</h2>
+  {% include comment_form.html %} -->
+
 </div>
