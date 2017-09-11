@@ -22,14 +22,3 @@ description: >
 # Build settings
 markdown : kramdown
 exclude  : [build, serve, vendor, Gemfile*]
-
-# Staticman settings
-staticman:
-  allowedFields  : ['name', 'email', 'comment', 'pic', 'parent', 'timestamp']
-  branch         : master
-  commitMessage  : "New comment on post with pic {fields.pic}"
-  filename       : "{fields.pic}{fields.timestamp}"
-  format         : yml
-  moderation     : true
-  path           : "_data/comments"
-  requiredFields : ['name', 'email', 'comment', 'pic', 'parent', 'timestamp']
