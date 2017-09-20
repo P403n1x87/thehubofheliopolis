@@ -208,7 +208,9 @@ pre {
 
 #markdown-toc {
   list-style-position: inside;
-  padding: 12px;
   padding-left: 24px;
-  margin: 24px;
+  margin: 4px;
+  margin-bottom: 24px;
+  border-left: solid 4px;
+  list-style: none;
 }

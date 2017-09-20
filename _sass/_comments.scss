@@ -1,10 +1,14 @@
 .comments {
   padding: $spacing-unit 2*$spacing-unit $spacing-unit 2*$spacing-unit;
-  font-size: 80%;
+  font-size: 11pt;
 
   h2 {
     font-size: 100%;
     margin-top:24px;
+  }
+
+  p {
+    margin-bottom: 0px;
   }
 }
 
@@ -13,15 +17,15 @@
   list-style: none;
 
   > li {
-      margin-bottom: .5*$spacing-unit;
-      padding: 8px $spacing-unit 8px $spacing-unit;
-      border-left: thick solid lighten(#061212, 25%);
-      background-color: #061212;
-      border-top-right-radius: 6px;
-      border-bottom-left-radius: 6px;
-      border-bottom-right-radius: 6px;
-      border-radius: 6px;
-      box-shadow: 0 0 12px 0px lighten(#061212, 25%);
+    margin-bottom: .5*$spacing-unit;
+    padding: 8px;
+    border-left: thick solid lighten(#061212, 25%);
+    background-color: #061212;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-radius: 6px;
+    box-shadow: 0 0 12px 0px lighten(#061212, 25%);
   }
 }
 
@@ -29,8 +33,8 @@
   font-size: 80%;
   font-family: "Noto Sans";
   color: lighten(#061212, 75%);
-  border-top: 1px solid lighten(#061212, 25%);
-  padding-top:8px;
+  padding-top:4px;
+  padding-bottom: 4px;
 
   span {
     margin-left: 4px;
@@ -38,16 +42,65 @@
   }
 }
 
-.comment input, textarea {
+.comment-text p {
+  margin-bottom: 0px;
+}
+
+.comment-container {
+  display: flex;
+  flex-flow: row;
+  align-items: flex-start;
+}
+
+.comment input, textarea, button {
   display: block;
-  width: 512px;
+  width: 90%;
+  min-width: 90%;
+  max-width: 90%;
   padding: 12px;
   margin:auto;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin-top: 6px;
+  margin-bottom: 6px;
   background: transparent;
   border: 3px solid grey;
   color: white;
+  outline:none;
+}
+
+.comment, .comment-reply {
+  flex: 1 100%;
+}
+
+.gravatar {
+  display: block;
+  width: 48px;
+  border-radius: 999px;
+  margin: 8px;
+}
+
+.small {
+  width: 36px;
+}
+
+ul.comment-replies {
+  margin-left:0px;
+  margin-bottom: 0px;
+  list-style: none;
+  font-size: 10pt;
+
+  border-left: thick solid lighten(#061212, 15%);
+
+  > li {
+    padding: 4px;
+  }
+}
+
+div.comment-replies {
+  padding:4px;
+}
+
+.comment-reply {
+  margin: 0px;
 }
 
 .flat_button {
@@ -59,10 +112,77 @@
   width: auto !important;
   font-family: "Comfortaa";
   margin-top: 24px !important;
-  transition: background-color 300ms;
+  min-width: 0px !important;
+  max-width: none !important;
+
+  transition: background-color 300ms !important;
+  transition: top 300ms;
 }
 
 .flat_button:hover {
   background-color: green !important;
   color: white !important;
+}
+
+.flat_button:active {
+  position:relative;
+  top:4px;
+}
+
+.action {
+  font-family: Noto Sans;
+  font-weight: bold;
+  font-size: 90%;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.action:hover { cursor: pointer; cursor: hand; }
+
+/*
+ * Snackbar
+ */
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 6px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+  font-family: "Noto Sans"
+}
+
+ /* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
 }

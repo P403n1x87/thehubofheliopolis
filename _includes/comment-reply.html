@@ -1,19 +1,27 @@
-<div class="comments">
-  <h1>Comments</h1>
+{% assign comments = site.data.comments | sort %}
+{% assign cnt = 0 %}
+{% for comment in comments %}
+  {% assign data = comment[1] %}
 
-  {% if site.data.comments != null %}
-    {% assign comments = site.data.comments | sort %}
-    {% assign cnt = 0 %}
-    <ul class="comment-list">
+  {% if data.pic == page.pic and data.parent == include.parent %}
+    {% assign cnt = cnt | plus:1 %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if cnt > 0 %}
+  <div class="comment-replies">
+    <ul class="comment-replies">
       {% for comment in comments %}
         {% assign data = comment[1] %}
 
-        {% if data.pic == page.pic and data.parent == 0 %}
+        {% if data.pic == page.pic and data.parent == include.parent %}
           {% assign cnt = cnt | plus:1 %}
           <li>
             <div class="comment-container">
-              <img src="https://www.gravatar.com/avatar/{{ data.email }}" class="gravatar"/>
-              <div class="comment">
+              <img src="https://www.gravatar.com/avatar/{{ data.email }}" class="gravatar small"/>
+
+              <div class="comment-reply">
                 <div class="comment-info">
                   <i class="fa fa-pencil" aria-hidden="true"></i> <span>{{ data.name }}</span> <i class="fa fa-calendar" aria-hidden="true"></i> <span>{{ data.timestamp | date: "%a, %b %d, %Y @ %H:%M" }}</span>
                 </div>
@@ -28,9 +36,5 @@
         {% endif %}
       {% endfor %}
     </ul>
-  {% endif %}
-
-  <h2 id="comment-hdr">Leave a comment</h2>
-  {% include comment_form.html %}
-
-</div>
+  </div>
+{% endif %}

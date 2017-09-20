@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 
+  {% include jquery.html %}
+  
   {% include head.html %}
 
   <body>
@@ -16,7 +18,7 @@
     {% include footer.html %}
 
     {% if jekyll.environment == 'production' %}
-    {% include analytics.html %}
+      {% include analytics.html %}
     {% endif %}
 
     {% include font-awesome.html %}

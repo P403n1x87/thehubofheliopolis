@@ -6,7 +6,7 @@ comments:
   format         : yml
   moderation     : true
   path           : "_data/comments"
-  requiredFields : ['name', 'email', 'comment', 'pic', 'parent', 'timestamp']
+  requiredFields : ['name', 'comment', 'pic', 'parent', 'timestamp']
 
   transforms:
     email: md5

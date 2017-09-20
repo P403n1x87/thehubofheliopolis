@@ -2,3 +2,4 @@ build
 serve
 .sass-cache
 _site
+*.txt
