@@ -214,12 +214,16 @@
 
   .highlight {
     left: -12px !important;
+
+    pre {
+      padding-left: 12px !important;
+    }
   }
 
   .gravatar {
     width: 36px !important;
   }
-  
+
   .small {
     width: 24px !important;
   }
