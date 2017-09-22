@@ -183,6 +183,21 @@
     width:         calc(100% - (#{$spacing-unit} / 2));
   }
 
+  .site-header {
+    min-width: 0px;
+    min-height: 64px;
+
+    img {
+      display: none;
+    }
+  }
+
+  .site-title {
+    font-size: 18pt;
+    margin-top: 12px;
+    display: block;
+  }
+
   .home {
     padding-left: 0px;
     padding-right: 0px;
@@ -190,7 +205,23 @@
 
   .post-header, .post-excerpt, .post-content, .comments {
     padding: 12px !important;
-    font-size: 95%;
+    font-size: 90% !important;
+
+    .post-title {
+      font-size: 18pt;
+    }
+  }
+
+  .highlight {
+    left: -12px !important;
+  }
+
+  .gravatar {
+    width: 36px !important;
+  }
+  
+  .small {
+    width: 24px !important;
   }
 
   img {
