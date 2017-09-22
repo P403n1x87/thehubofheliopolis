@@ -12,7 +12,7 @@ layout: default
   </header>
 
   <div class="post-excerpt">
-    {{ page.excerpt }}
+    {{ page.excerpt | markdownify }}
   </div>
 
   <div class="post-content" itemprop="articleBody">
