@@ -109,12 +109,12 @@ $font-size: 80%;
 
 
 .highlight .lineno {
-  padding-left: 0;
+  padding-left: 0 !important;
   max-height: none;
 }
 
 .highlight .code pre{
-  padding-left: 0;
+  padding-left: 0 !important;
   max-height: none;
 }
 
