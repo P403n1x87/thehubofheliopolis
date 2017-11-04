@@ -4,6 +4,7 @@ layout : post
 title  : Getting Started with x86-64 Assembly on Linux
 author : Gabriele N. Tornetta
 date   : 2016-08-10 15:48:37 +0100
+toc    : true
 
 categories:
   - Assembly
@@ -25,11 +26,6 @@ excerpt: >
 ---
 
 In this post we will learn how to assemble and link a simple "Hello World" application written in x86-64 assembly for the Linux operating system. If you have experience with Intel IA-32 assembly and you want to quickly get adjusted to the x86-64 world then this post is for you. If you're trying to learn the assembly language from scratch then I'm afraid this post is not for you. There are many great resources online on 32-bit assembly. One of my favourite documents is Paul Carter's PC Assembly Language, which I highly recommend if you're moving your first steps into the assembly language. If you then decide to come back to this post, you should be able to read it with no problems, since the tools that I will employ here are the same used in Carter's book.
-
-<h4>Table of Contents</h4>
-* Table of Contents
-{:toc}
-
 
 # Overview
 

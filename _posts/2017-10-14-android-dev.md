@@ -5,6 +5,7 @@ title   : Android Development from the Command Line
 author  : Gabriele N. Tornetta
 date    : 2017-10-14 22:42:00 +0100
 github  : P403n1x87/androtest
+toc     : true
 
 categories:
   - Android
@@ -21,10 +22,6 @@ tags:
 excerpt: >
   Do you like your development tools to be as simple as a text editor to write the code and a bunch of CLI application to build your projects? Do you feel like you are in a cage when you use an IDE? Or perhaps your PC or laptop is a bit dated and all the cores spin like crazy when you fire up Android Studio? Then read on to learn how you can develop Android application with just the text editor of your choice and the standard Android SDK CLI tools.
 ---
-
-<h4>Table of Contents</h4>
-* Table of Contents
-{:toc}
 
 # Introduction
 

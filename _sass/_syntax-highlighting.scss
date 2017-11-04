@@ -2,15 +2,24 @@
  * Syntax highlighting styles
  */
 
-$font-size: 80%;
-
 .highlight {
-    background: none;
+    background: $black;
     margin: auto;
+    margin-bottom: $spacing-unit / 2;
+    border-radius: 6px;
+    box-shadow: 0 0 8px darken($black, 20) inset;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: $small-font-size;
+
+    > pre {
+      padding: $spacing-unit / 2;
+      margin-left: $spacing-unit / 2;
+      margin-right: 2px;
+
+    }
+
     @extend %vertical-rhythm;
-    position: relative;
-    left: -2*$spacing-unit;
-    width: $content-width;
 
     .highlighter-rouge & {
       background: darken(#eef, 50);
@@ -78,7 +87,6 @@ $font-size: 80%;
 }
 
 .highlight pre {
-  padding-left: 2 * $spacing-unit;
   max-height: 480px;
 }
 
@@ -106,32 +114,57 @@ $font-size: 80%;
 }
 
 
-
-
 .highlight .lineno {
-  padding-left: 0 !important;
   max-height: none;
+  font-size: $x-small-font-size;
+  line-height: $base-line-height * $font-grow-factor;
+  color: $gray;
+  margin-right: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: darken($black, 2)
 }
 
-.highlight .code pre{
+.highlight .code pre {
   padding-left: 0 !important;
   max-height: none;
 }
 
 .terminal {
-  box-shadow: 0 0 6px darken(#efa, 60);
+  box-shadow: 0 0 8px darken($yellow, 10);
   border-radius: 4px;
   width: 95%;
   margin: auto;
+  margin-bottom: $spacing-unit;
+  margin-top: $spacing-unit;
 
-  background-color: #101010;
-  color: #eef;
-}
+  background-color: $black;
 
-.terminal pre {
-  background-color: inherit;
-  color: #efa;
-  border: none;
-  max-height:256px;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  .terminal-header {
+    color: silver;
+    background-color: #202020;
+    border-radius: 4px 4px 0 0;
+    font-weight: 600;
+    font-family: $sans-serif1;
+    padding:6px;
+    font-size: $x-small-font-size;
+  }
+
+  .terminal-body {
+    color: $yellow;
+    border-radius: 0 0 4px 4px;
+    padding: 8px;
+    max-height: 480px;
+    overflow: auto;
+  }
+
+  pre {
+    font-size: normal;
+    padding:0;
+    margin:0;
+  }
 }
