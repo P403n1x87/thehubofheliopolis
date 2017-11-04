@@ -25,10 +25,10 @@ $purple  : #800080;
 
 
 // Our variables
-$base-font-family: "Exo", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
-$base-font-weight: 200;
-$base-line-height: 1.3;
+$base-font-family    : "Exo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-size      : 16px;
+$base-font-weight    : 200;
+$base-line-height    : 1.3;
 
 $sans-serif1         : "Montserrat";      // Meta-content
 $sans-serif2         : "Exo";             // Excerpt
@@ -127,6 +127,7 @@ img + em {
 /**
  * Fonts
  */
+
 // Monospace
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200,400,600,800&subset=latin-ext');
 @import url('https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700');
