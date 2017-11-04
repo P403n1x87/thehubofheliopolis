@@ -4,6 +4,7 @@ layout : post
 title  : A Gentle Introduction to IoT
 author : Gabriele N. Tornetta
 date   : 2017-07-31 19:30:15 +0100
+toc    : true
 
 categories:
   - Raspberry Pi
@@ -30,10 +31,6 @@ excerpt: >
 ---
 
 ![IoT everywhere]({{ site.url }}/images/iot/iot.jpg){: .center-image }
-
-<h4>Table of Contents</h4>
-* Table of Contents
-{:toc}
 
 # Preamble
 

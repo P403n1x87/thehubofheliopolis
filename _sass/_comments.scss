@@ -1,6 +1,5 @@
 .comments {
-  padding: $spacing-unit 2*$spacing-unit $spacing-unit 2*$spacing-unit;
-  font-size: 11pt;
+  font-size: $small-font-size;
 
   h2 {
     font-size: 100%;
@@ -18,23 +17,12 @@
 
   > li {
     margin-bottom: .5*$spacing-unit;
-    padding: 8px;
-    border-left: thick solid lighten(#061212, 25%);
-    background-color: #061212;
-    border-top-right-radius: 6px;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
-    border-radius: 6px;
-    box-shadow: 0 0 12px 0px lighten(#061212, 25%);
   }
 }
 
 .comment-info {
-  font-size: 80%;
-  font-family: "Noto Sans";
-  color: lighten(#061212, 75%);
-  padding-top:4px;
-  padding-bottom: 4px;
+  font-size: $x-small-font-size;
+  color: $gray;
 
   span {
     margin-left: 4px;
@@ -43,7 +31,8 @@
 }
 
 .comment-text p {
-  margin-bottom: 0px;
+  margin-bottom: 8px;
+  margin-top: 8px;
 }
 
 .comment-container {
@@ -54,7 +43,7 @@
 
 .comment input, textarea, button {
   display: block;
-  width: 90%;
+
   min-width: 90%;
   max-width: 90%;
   padding: 12px;
@@ -86,13 +75,6 @@ ul.comment-replies {
   margin-left:0px;
   margin-bottom: 0px;
   list-style: none;
-  font-size: 10pt;
-
-  border-left: thick solid lighten(#061212, 15%);
-
-  > li {
-    padding: 4px;
-  }
 }
 
 div.comment-replies {
@@ -104,24 +86,23 @@ div.comment-replies {
 }
 
 .flat_button {
-  border: 2px solid green !important;
-  background-color: white !important;
-  color: green !important;
-  border-radius: 6px;
-  padding: 24px !important;
-  width: auto !important;
-  font-family: "Comfortaa";
-  margin-top: 24px !important;
+  background-color: $yellow;
+  color: $black;
+  padding: 12px !important;
+  width: auto;
+  margin-top: 24px;
   min-width: 0px !important;
   max-width: none !important;
+  border: none;
+  font-family: $monospace3;
 
   transition: background-color 300ms !important;
   transition: top 300ms;
 }
 
 .flat_button:hover {
-  background-color: green !important;
-  color: white !important;
+  background-color: $black;
+  color: $yellow;
 }
 
 .flat_button:active {
@@ -130,11 +111,12 @@ div.comment-replies {
 }
 
 .action {
-  font-family: Noto Sans;
+  font-family: $sans-serif3;
   font-weight: bold;
-  font-size: 90%;
+  font-size: $x-small-font-size;
   margin-top: 6px;
   margin-bottom: 6px;
+  color: $orange;
 }
 
 .action:hover { cursor: pointer; cursor: hand; }
@@ -155,7 +137,7 @@ div.comment-replies {
   z-index: 1; /* Add a z-index if needed */
   left: 50%; /* Center the snackbar */
   bottom: 30px; /* 30px from the bottom */
-  font-family: "Noto Sans"
+  font-family: $monospace1
 }
 
  /* Show the snackbar when clicking on a button (class added with JavaScript) */

@@ -1,28 +1,8 @@
 <div class="post-info">
-  <table class="post-attr-table">
-    <tr>
-      <td><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></td>
-      <td>{{ post.date | date: "%b %-d, %Y" }}&nbsp;&nbsp; <i class="fa fa-clock-o" aria-hidden="true"></i> {% include read_time.html %}</td>
-    </tr>
-    <tr>
-      <td><i class="fa fa-archive" aria-hidden="true"></i></td>
-      <td>
-        {% for cat in post.categories %}<span class="category">{{ cat }}</span>{% endfor %}
-      </td>
-    </tr>
-    <tr>
-      <td><i class="fa fa-tags" aria-hidden="true"></i></td>
-      <td>
-        {% for tag in post.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
-      </td>
-    </tr>
-    {% if post.github %}
-    <tr>
-      <td><i class="fa fa-github" aria-hidden="true"></i></td>
-      <td>
-        <a href="https://github.com/{{ post.github }}">{{ post.github }}</a>
-      </td>
-    </tr>
-    {% endif %}
-  </table>
+  <div class="post-detail"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;{{ post.date | date: "%Y %b %-d" }}</div>
+  <div class="post-detail"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;{% include read-time.html %}</div>
+  {% include tagging.html %}
+  {% if post.github %}
+    <div class="post-detail"><i class="fa fa-github" aria-hidden="true"></i>&nbsp;<a href="https://github.com/{{ post.github }}">{{ post.github }}</a></div>
+  {% endif %}
 </div>

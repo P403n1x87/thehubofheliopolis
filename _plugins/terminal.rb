@@ -9,15 +9,12 @@ module Jekyll
       n = super.lines.count - 1
       if @prompt.length > 0 then
         p = ([@prompt] * n).join("\n")
-        c = '
-<pre style="float:left;padding-right: 0px;">' << p     << '</pre>
-<pre style="padding-left: 0px;">' << super << '</pre>
-'
+        c = "<div class=\"pad-right\"><pre>#{p}</pre></div><div><pre>#{super}</pre></div>"
       else
-        c = '<pre>' << super << '</pre>'
+        c = "<div><pre>#{super}</pre></div>"
       end
 
-      '<figure class="terminal">' << c << '</figure>'
+      "<div class=\"terminal\"><div class=\"terminal-header\">Terminal</div><div class=\"terminal-body flex-container flex-row\">#{c}</div></div>"
     end
   end
 end
