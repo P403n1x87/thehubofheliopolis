@@ -70,9 +70,9 @@ article.post {
   }
 
   .post-title {
-      @include media-query($on-laptop) {
-          font-size: 36px;
-      }
+    @include media-query($on-laptop) {
+      font-size: $xxx-large-font-size;
+    }
   }
 
   .post-excerpt {
@@ -93,40 +93,58 @@ article.post {
   }
 
   .post-content {
-      text-align: justify;
+    text-align: justify;
 
-      h1 {
-          font-size: $xxx-large-font-size;
+    h1 {
+      font-size: $xxx-large-font-size;
 
-          @include media-query($on-laptop) {
-              font-size: 32px;
-          }
+      @include media-query($on-laptop) {
+        font-size: 32px;
+      }
+    }
+
+
+    h2 {
+      font-size: $xx-large-font-size;
+
+      @include media-query($on-laptop) {
+        font-size: 28px;
+      }
+    }
+
+    h3 {
+      font-size: $x-large-font-size;
+
+      @include media-query($on-laptop) {
+        font-size: 22px;
+      }
+    }
+
+    h4 {
+      font-size: $large-font-size;
+
+      @include media-query($on-laptop) {
+        font-size: 18px;
+      }
+    }
+
+    > table {
+      margin-top: $spacing-unit;
+      margin-bottom: $spacing-unit;
+      border-spacing: 0px;
+
+      th, td {
+        padding: 6px;
+        vertical-align: top;
+        border-bottom: 1px solid $yellow;
       }
 
-
-      h2 {
-          font-size: $xx-large-font-size;
-
-          @include media-query($on-laptop) {
-              font-size: 28px;
-          }
+      th {
+        font-family: $monospace3;
+        color: $black;
+        background-color: $yellow;
       }
-
-      h3 {
-          font-size: $x-large-font-size;
-
-          @include media-query($on-laptop) {
-              font-size: 22px;
-          }
-      }
-
-      h4 {
-          font-size: $large-font-size;
-
-          @include media-query($on-laptop) {
-              font-size: 18px;
-          }
-      }
+    }
   }
 
   .post-info {
@@ -168,4 +186,32 @@ article.post {
       }
     }
   }
+}
+
+
+/**
+ * About
+ */
+.rel-notice {
+
+  td {
+    padding-bottom: $spacing-unit / 2;
+  }
+
+  .date {
+    font-family: $sans-serif1;
+    font-weight: bold;
+    color: $orange;
+    border-top: 2px solid $green;
+
+    ~ td {
+      padding-left: $spacing-unit / 2;
+    }
+  }
+}
+
+
+.about-text {
+  max-width: $content-width;
+  font-family: $sans-serif1;
 }
