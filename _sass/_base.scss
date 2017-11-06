@@ -153,11 +153,6 @@ pre {
  */
 .wrapper {
   @extend %clearfix;
-
-  @include media-query($on-laptop) {
-    padding-right: $spacing-unit / 2;
-    padding-left: $spacing-unit / 2;
-  }
 }
 
 
@@ -191,6 +186,13 @@ pre {
       fill: $grey-color;
     }
   }
+}
+
+.icon-64px {
+  max-width: 64px;
+  max-height: 64px;
+  height: auto;
+  width: auto;
 }
 
 #markdown-toc {
