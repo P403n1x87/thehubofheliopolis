@@ -1,6 +1,7 @@
 ---
-layout : about
-title  : About
+layout    : about
+title     : About
+permalink : /about/
 ---
 
 # Hey there
@@ -21,7 +22,7 @@ Currently, I work as a **Software Engineer**, based in Edinburgh, Scotland.
 
     <tr>
       <td class="date">2011</td>
-      <td>Upgraded to Theoratical Physicist (MSc).</td>
+      <td>Upgraded to Theoretical Physicist (MSc).</td>
     </tr>
 
     <tr>
