@@ -7,8 +7,7 @@
     <ul class="comment-list">
       {% for comment in comments %}
         {% assign data = comment[1] %}
-
-        {% if data.pic == page.pic and data.parent == 0 %}
+        {% if data.pic == page.pic and data.parent == '0' %}
           {% assign cnt = cnt | plus:1 %}
           <li>
             <div class="comment-container">
