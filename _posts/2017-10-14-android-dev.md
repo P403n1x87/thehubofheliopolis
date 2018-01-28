@@ -343,7 +343,7 @@ public class MainActivity extends Activity
       }
     }
     else {
-      text.setText("We DO NOT have gravity! :(");a
+      text.setText("We DO NOT have gravity! :(");
     }
   }
 

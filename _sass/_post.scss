@@ -17,7 +17,7 @@
 
 .post-excerpt {
   text-align: justify;
-  font-family: $sans-serif2;
+  font-family: $excerpt-font;
 }
 
 ul .post {
@@ -29,7 +29,7 @@ ul .post {
 
   .post-detail {
     color: $gray;
-    font-size: $x-small-font-size;
+    font-size: $small-font-size;
     margin-top: $spacing-unit / 3;
     margin-bottom: $spacing-unit / 3;
   }
@@ -93,7 +93,9 @@ article.post {
   }
 
   .post-content {
+    font-family: $post-font;
     text-align: justify;
+    line-height: $post-line-height;
 
     h1 {
       font-size: $xxx-large-font-size;

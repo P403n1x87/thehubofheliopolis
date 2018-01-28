@@ -14,7 +14,8 @@ module Jekyll
         c = "<div><pre>#{super}</pre></div>"
       end
 
-      "<div class=\"terminal\"><div class=\"terminal-header\">Terminal</div><div class=\"terminal-body flex-container flex-row\">#{c}</div></div>"
+      # "<div class=\"terminal\"><div class=\"terminal-header\">Terminal</div><div class=\"terminal-body flex-container flex-row\">#{c}</div></div>"
+      "<div class=\"terminal\"><div class=\"terminal-body flex-container flex-row\">#{c}</div></div>"
     end
   end
 end

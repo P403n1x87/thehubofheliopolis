@@ -83,7 +83,8 @@ li {
  */
 h1, h2, h3, h4, h5, h6 {
   font-weight: $base-font-weight;
-  font-family: $monospace3;
+  font-family: $headings-font;
+  margin-top: $spacing-unit;
 }
 
 h1 {
@@ -114,12 +115,11 @@ a {
  * Blockquotes
  */
 blockquote {
-  color: $grey-color;
-  border-left: 4px solid $grey-color-light;
-  padding-left: $spacing-unit / 2;
-  font-size: 18px;
-  letter-spacing: -1px;
-  font-style: italic;
+  color: lighten($lime, 40);
+  font-size: $small-font-size;
+  padding: $spacing-unit / 2;
+  background-color: darken($maroon, 1);
+  border-radius: 8px;
 
   > :last-child {
     margin-bottom: 0;
@@ -133,7 +133,7 @@ blockquote {
  */
 pre,
 code {
-  font-family: $monospace2, monospace;
+  font-family: $code-font, monospace;
 }
 
 pre {
