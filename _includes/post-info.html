@@ -3,6 +3,6 @@
   <div class="post-detail"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;{% include read-time.html %}</div>
   {% include tagging.html %}
   {% if post.github %}
-    <div class="post-detail"><i class="fa fa-github" aria-hidden="true"></i>&nbsp;<a href="https://github.com/{{ post.github }}">{{ post.github }}</a></div>
+    <div class="post-detail"><i class="fa fa-github" aria-hidden="true"></i>&nbsp;<a href="https://github.com/{{ post.github }}">{{ post.github | replace: 'tree/master/', '' }}</a></div>
   {% endif %}
 </div>

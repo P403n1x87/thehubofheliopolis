@@ -56,6 +56,10 @@
   outline:none;
 }
 
+#comment {
+  min-height: 2 * $base-font-size;
+}
+
 .comment, .comment-reply {
   flex: 1 100%;
 }

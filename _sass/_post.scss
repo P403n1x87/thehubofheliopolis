@@ -35,7 +35,7 @@ ul .post {
   }
 
   .post-excerpt {
-    font-size: $small-font-size;
+    font-size: $base-font-size;
     font-weight: 200;
 
     p {
@@ -150,16 +150,20 @@ article.post {
   }
 
   .post-info {
-    font-size: $x-small-font-size;
+    font-size: $small-font-size;
     margin-bottom: $spacing-unit;
 
     div {
       margin-bottom: 6px;
     }
+
+    .fa {
+      font-size: $x-large-font-size;
+    }
   }
 
   .toc {
-    font-size: $small-font-size;
+    font-size: $base-font-size;
     font-family: $monospace3;
     color: $silver;
 
@@ -178,7 +182,7 @@ article.post {
       ul {
         margin-left: 30px;
         list-style-type: square;
-        font-size: $x-small-font-size;
+        font-size: $small-font-size;
 
       }
 
@@ -216,4 +220,8 @@ article.post {
 .about-text {
   max-width: $content-width;
   font-family: $sans-serif1;
+}
+
+.section-nav {
+  padding-bottom: $spacing-unit !important;
 }
