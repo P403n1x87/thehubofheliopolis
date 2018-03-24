@@ -13,8 +13,9 @@
   font-size: $base-font-size;
 
   > pre {
-    padding: $spacing-unit / 2;
-    margin-left: $spacing-unit / 2;
+    padding: $spacing-unit/2;
+    padding-left: $spacing-unit;
+    // margin-left: $spacing-unit / 2;
     margin-right: 2px;
 
   }
@@ -131,6 +132,16 @@
   padding-left: 0 !important;
   max-height: none;
   line-height: $base-line-height;
+}
+
+.highlight pre code table {
+  position:relative;
+  left: -$spacing-unit;
+  top: -$spacing-unit / 2;
+}
+
+.highlight td pre {
+  padding-top: $spacing-unit / 2;
 }
 
 .terminal {

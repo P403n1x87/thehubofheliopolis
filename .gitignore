@@ -3,3 +3,5 @@ serve
 .sass-cache
 _site
 *.txt
+intro-iot*
+primes*
