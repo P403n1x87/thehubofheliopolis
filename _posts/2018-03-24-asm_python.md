@@ -62,7 +62,7 @@ l_asm_methods:              ;; struct PyMethodDef[] *
 ISTRUC PyMethodDef
   at PyMethodDef.ml_name    , dq l_sayit_name
   at PyMethodDef.ml_meth    , dq asm_sayit
-  at PyMethodDef.ml_flags   , dq METH_VARARGS
+  at PyMethodDef.ml_flags   , dq METH_NOARGS
   at PyMethodDef.ml_doc     , dq l_sayit_doc
 IEND
 NullMethodDef
@@ -170,7 +170,7 @@ l_asm_methods:              ;; struct PyMethodDef[] *
 ISTRUC PyMethodDef
   at PyMethodDef.ml_name    , dq l_sayit_name
   at PyMethodDef.ml_meth    , dq asm_sayit
-  at PyMethodDef.ml_flags   , dq METH_VARARGS
+  at PyMethodDef.ml_flags   , dq METH_NOARGS
   at PyMethodDef.ml_doc     , dq l_sayit_doc
 IEND
 NullMethodDef
