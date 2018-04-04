@@ -363,10 +363,10 @@ Note the use of the `-shared` switch, which instructs the linker to create a sha
 
 ## How to Test the Module
 
-The first thing that you might want to do is to manually test that the shared object file works fine with Python. For CPython to be able to find the module, we need to ensure that its location is included in the search path. One way is to add it to the `PYTHONPATH` environment variable. For example, if we navigate to the folder `asm/`, we can launch Python with
+The first thing that you might want to do is to manually test that the shared object file works fine with Python. For CPython to be able to find the module, we need to ensure that its location is included in the search path. One way is to add it to the `PYTHONPATH` environment variable. For example, from within the project folder, we can launch Python with
 
 {% terminal $ %}
-PYTHONPATH=. python3
+PYTHONPATH=./asm python3
 {% endterminal %}
 
 and from the interactive session we should be able to import the module with
@@ -376,11 +376,11 @@ and from the interactive session we should be able to import the module with
 >>>
 {% endhighlight %}
 
-Alternatively, assuming that we are still in the `asm/` folder, we can add the search path to `sys.path` with these few lines of Python code
+Alternatively, we can add the search path to `sys.path` with these few lines of Python code
 
 {% highlight python %}
 >>> import sys
->>> sys.path.append(".")
+>>> sys.path.append("./asm")
 >>> import asm
 >>>
 {% endhighlight %}
