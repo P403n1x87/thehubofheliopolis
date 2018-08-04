@@ -23,5 +23,5 @@ description: >
 markdown : kramdown
 exclude  : [build, serve, vendor, Gemfile*]
 
-gems:
+plugins:
   - jekyll-toc
