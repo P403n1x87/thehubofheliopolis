@@ -1,0 +1,7 @@
+_id: c38d19b0-4e3c-11ea-b671-c78708214b49
+name: Mitja
+email: fdfa9dd3939a4acee4c54e4d16fda366
+comment: "I am working on something similar to what you described in this very well written post. But I have one difference that I do not know on how to overcome. To put it in the perspective of your project, I need the rPi to:\r\n- serve as an async websockets server (like in your case), and also\r\n- synchronously check a few inputs on GPIO pins through which you can for instance set the brightness of LEDs.\r\n\r\nWould you have an idea on how to join those two cases? Thanks for any advice."
+pic: websockets_asyncio
+timestamp: '1581583346'
+parent: '0'
