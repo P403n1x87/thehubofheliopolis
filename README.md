@@ -2,4 +2,5 @@
 
 # P403n1x87.github.io
 
-This repository hosts the sources for the generation of the main GitHub Pages site.
+This repository hosts the sources for the generation of the main GitHub Pages
+site.
