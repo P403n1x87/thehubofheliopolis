@@ -38,7 +38,7 @@ def generate_redirects():
     REDIRECTS = [
         (
             "python/profiling/2019/05/05/python-profiling.html",
-            "android-development-from-the-command-line.html",
+            "deterministic-and-statistical-python-profiling.html",
         ),
         (
             "assembly/x86_64/2016/08/10/getting-started-with-x68-asm.html",
