@@ -1,0 +1,18 @@
+<!-- <img src="{{ SITEURL }}/theme/images/logo_bg.svg"
+     width="192px"
+     class="block mx-auto"/> -->
+<div id="categories">
+  <h2 class="py-4">&#128451; Categories</h2>
+    <ul>
+    {% for cat, null in categories|sort %}
+      <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+    {% endfor %}</ul>
+  <h2 class="py-4">&#127991; Tags</h2>
+    <ul>
+    {% for t, null in tags|sort %}
+      <li class="py-1 {% if t == tag %} active{% endif %}"><a class="tag" href="{{ SITEURL }}/{{ t.url }}">{{ t }}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+
+<!-- {{ articles|selectattr("category", "equalto", cat)|list|length }} -->

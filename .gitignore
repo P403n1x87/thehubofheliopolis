@@ -1,6 +1,6 @@
-build
+output/
 serve
-.sass-cache
+__pycache__
 _site
 *.txt
 intro-iot*
