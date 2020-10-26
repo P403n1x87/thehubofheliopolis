@@ -24,7 +24,7 @@
 {% block heading %}
   <header class="post-info relative">
     <div id="heading-bg" style="background-image: url({% if article.art %}images/{{ article.art }}{% else %}theme/images/default_art.png{% endif %});"></div>
-    <div id="heading-info" class="absolute bottom-0 p-4 w-full bg-opacity-75 bg-black">
+    <div id="heading-info" class="absolute bottom-0 p-4 w-full bg-opacity-50 bg-black">
       <h1 class="entry-title">{{ article.title }}</h1>
     {% import 'translations.html' as translations with context %}
     {{ translations.translations_for(article) }}
