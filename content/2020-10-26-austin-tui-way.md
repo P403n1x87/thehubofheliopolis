@@ -72,7 +72,7 @@ So take a look at the following minimalist example.
 
       <aui:signal key="q" handler="on_quit" />
 
-    </aui:MiniTop>
+    </aui:MinimalView>
 *minimal-view.xml*
 
 The above XML document describes a view with two main components: a `Window`
