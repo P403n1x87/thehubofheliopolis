@@ -102,7 +102,7 @@ available from ordinary releases too!
 [ext]: https://docs.python.org/3/extending/extending.html
 [cython]: https://cython.org/
 [pyo3]: https://github.com/PyO3/pyo3
-[asm]: {filename}2018-03-24-asn-python.md
+[asm]: {filename}2018-03-24-asm-python.md
 [austinp]: https://github.com/P403n1x87/austin/tree/devel#native-frame-stack
 [libunwind]: https://www.nongnu.org/libunwind/
 [ptrace]: https://man7.org/linux/man-pages/man2/ptrace.2.html

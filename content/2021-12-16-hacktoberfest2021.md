@@ -135,7 +135,7 @@ fixed in just a few minutes :).
 
 
 [austin]: https://github.com/p403n1x87/austin
-[bust]: {filename}2021-06-22-bust-perf-issues
+[bust]: {filename}2021-06-22-bust-perf-issues.md
 [devto]: https://dev.to/p403n1x87
 [pywhat]: https://github.com/bee-san/pyWhat
 [vscode]: https://marketplace.visualstudio.com/items?itemName=p403n1x87.austin-vscode
