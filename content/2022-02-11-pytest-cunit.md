@@ -4,7 +4,7 @@ Date:     2022-02-11 14:01:00 +0000
 Category: Programming
 Tags:     python, testing, c
 pic:      pytest-cunit
-Summary:  In this post I will describe my approach to C unit testing using pytest as test runner.
+Summary:  In this post I will describe my approach to C unit testing using pytest. In particular, we get to see how to gracefully handle SIGSEGVs and prevent them from stopping the test runner abruptly. Furthermore, we shall try to write tests in a Pythonic way.
 
 [TOC]
 
@@ -29,9 +29,9 @@ few more that might convince you to use pytest for your C unit tests too!
 
 # Calling native code from Python
 
-Testing C code with Python would only make sense if it was easy to call native
+Testing C code with Python would only make sense if it were easy to call native
 code from the interpreter. Thankfully, the Python standard library comes with
-the [`ctypes`][ctypes] module which allows us to do just that! So let's start
+the [`ctypes`][ctypes] module that allows us to do just that! So let's start
 looking at some C code, for instance,
 
     :::c
@@ -75,7 +75,7 @@ If the test succeeds, the script's return code will be 0.
 # Enter pytest
 
 We are not here to just play around with bare `assert`s. I promised you the full
-power of Python and `pytest`, so clearly we can't settle with just this simple
+power of Python and `pytest`, so we can't settle with just this simple
 example. Let's add `pytest` to our test dependencies and do this instead
 
     :::python
@@ -167,7 +167,7 @@ the organisation of sources within an _actual_ C project, for instance
     ├── README
     ...
 
-In the previous example we built the shared object `fact.so` by hand, but in a
+In the previous example, we built the shared object `fact.so` by hand, but in a
 CI environment we would probably want to automate that step too. What should we
 use for that? A bash script? A makefile? Python, of course! What else?!? 😀
 
@@ -356,7 +356,7 @@ It's quite a fair bit of code; however, we are not interested in how the data
 structures are implemented, but rather to what it actually implements. This
 already gives us plenty to play with.
 
-The important detail here is that our C application has a component impemented
+The important detail here is that our C application has a component implemented
 in `cache.c` and we want to unit-test it. Before we can run any actual tests, we
 need to build a binary object that we can invoke from Python. So let's put this
 code in `tests/cunit/__init__.py`
@@ -415,7 +415,7 @@ test source this way
         assert lru_cache
         cache.lru_cache__destroy(lru_cache)
 
-At this point your project folder should have the following structure
+At this point, your project folder should have the following structure
 
     :::text
     my-c-project/
@@ -437,9 +437,10 @@ output we saw earlier.
 
 # Dead end?
 
-If you're still with me then things are probably looking interesting to you too.
-So let's test a bit more of the functions exported by the caching component.
-Let's make a test case for the `queue_item_t` and `queue_t` objects, like so
+If you're still with me, then things are probably looking interesting to you
+too. So let's test a bit more of the functions exported by the caching
+component. Let's make a test case for the `queue_item_t` and `queue_t` objects,
+like so
 
     :::python
     from ctypes import CDLL
@@ -551,11 +552,11 @@ and now the tests will all be happy! However, we really want to avoid crashing
 the `pytest` process when we run into a segmentation fault, which is not so rare
 when running arbitrary C code. Not only that, but we would like to get some
 useful information, like a traceback, that could give us insight as to where the
-problem might actually be! One of the many strengths of `pytest` is its
-[extensive configuration API][pytest-api]. How do we use it to not crash the
-test runner? The idea is to spawn another `pytest` process that runs just _a_
-test. Now, if that test causes a segmentation fault, the parent process will
-keep running the other tests. Let's put this into `tests/cunit/conftest.py`
+problem might be! One of the many strengths of `pytest` is its [extensive
+configuration API][pytest-api]. How do we use it to not crash the test runner?
+The idea is to spawn another `pytest` process that runs just _a_ test. Now, if
+that test causes a segmentation fault, the parent process will keep running the
+other tests. Let's put this into `tests/cunit/conftest.py`
 
     :::python
     # file: tests/cunit/conftest.py
@@ -696,7 +697,7 @@ provides the test we are wrapping around. This way, when the process terminates,
 either because the test passed or something really bad happened, we can inspect
 the return code and the streams, and act accordingly.
 
-So now we have a test runner that can handle segmentation faults gracefully, but
+So now we have a test runner that can handle segmentation faults gracefully but
 still doesn't tell us where they actually happened. Can we get some more
 detailed information in the output? When a Python test fails we get a nice
 traceback that tells us where things went wrong. Can we do the same with C unit
@@ -891,7 +892,7 @@ Now, when we run our broken test suite we should get this more verbose output
     FAILED tests/cunit/test_cache.py::test_queue_item - tests.cunit.conftest.Segmentati...
     ============================ 1 failed, 4 passed in 1.73s =============================
 
-Hmm Still not that useful. What if we compile with debug symbols? Let's change
+Hmm, Still not that useful. What if we compile with debug symbols? Let's change
 the `cache` fixture in `test_cache.py` so that it compiles the caching sources
 with the `-g` option
 
@@ -907,7 +908,7 @@ Now that's much, _much_ better!
     :::text
     E               #3  0x00007ff51cf8b40a in queue_item__destroy (self=0x104ac60, deallocator=0x7ff51cc68850 <__GI___libc_free>) at /home/gabriele/Projects/cunit/src/cache.c:37
 
-This tells us _exactly_ where the probem occurred. Now that we have this
+This tells us _exactly_ where the problem occurred. Now that we have this
 information we can fix the test and make the test suite happy again! 🎉
 
 
@@ -919,7 +920,7 @@ considering we are writing Python code, but don't feel Pythonic at all. Whilst
 there is, in principle, no reason why non-Python tests written in Python should
 look and feel Pythonic, can we somehow do something perhaps more elegant? The
 idea of using a fixture to wrap around a binary object is perhaps interesting,
-but can we maybe pretend that `cache` is a Python module instead, so that we can
+but can we maybe pretend that `cache` is a Python module instead so that we can
 do things like `from cache import queue_item_new` etc... and sweep all this
 `ctypes` business under the carpet? Well, let's give this a try, shall we?
 
@@ -986,11 +987,11 @@ writing something like this would be
         assert queue_item
 
 and we don't even care about destroying the object as we'd love the garbage
-collector to take care of that for us. That's clearly a more Pythonic way of
-going about our C unit tests. Can we achieve something like this? The answer is
-once again _yes_, but ... we can make this work provided we make some further
-assumption, like some naming conventions. You might have noticed that the data
-structures defined in `cache.h` have the naming `<adt>_t`, in a OOP flavour.
+collector to take care of that for us. Now that's a more Pythonic way of going
+about our C unit tests! Can we achieve something like this? The answer is once
+again _yes_, but ... we can make this work provided we make some further
+assumptions, like some naming conventions. You might have noticed that the data
+structures defined in `cache.h` have the naming `<adt>_t`, in an OOP flavour.
 Methods follow the naming convention `<adt>_<staticmethod>` and
 `<adt>__<emethod>`. Some of the methods have _special_ names, like `<adt>_new`,
 `<adt>__destroy` etc.... So, provided we adhere to _some_ naming conventions,
@@ -998,7 +999,7 @@ like this one, we could dynamically create Python types at runtime. How? With
 the secret art of [metaprogramming][metaprogramming]. But before we can start
 creating new types at runtime, we need to be able to parse C header files to
 infer their definitions. That's why our next step is to add `pycparser` to our
-test dependencies, and implement a C AST visitor that can collect all the
+test dependencies and implement a C AST visitor that can collect all the
 relevant type and method declarations that we can use to build the spec for
 Python types. Here is what it might look like
 
@@ -1082,8 +1083,8 @@ Python types. Here is what it might look like
             }
 
 This is also a handful, but the behaviour is very simple. We define an AST
-visitor that listens to `typedef`s and declarations. For the former we single
-out structure declarations and we store the relevant information inside an
+visitor that listens to `typedef`s and declarations. For the former, we single
+out structure declarations and store the relevant information inside an
 instance of the custom `CTypeDef` dataclass; as for the latter, we only trap
 function declaration (plus a special handling for those functions that return
 `char *`). The two intermediate dataclasses `CTypeDef` and `CFunctionDef` are
