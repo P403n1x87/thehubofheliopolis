@@ -22,24 +22,25 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 [tool.poetry]
-name = "the-hub-of-heliopolis"
-version = "0.1.0"
-description = ""
-license = "GPL-3.0-or-later"
 authors = ["Gabriele N. Tornetta <phoenix1987@gmail.com>"]
-readme = "README.md"
-homepage = "https://github.com/P403n1x87/the-hub-of-heliopolis"
-repository = "https://github.com/P403n1x87/the-hub-of-heliopolis"
-documentation = "https://the-hub-of-heliopolis.readthedocs.io"
-keywords = []
 classifiers = []
+description = ""
+documentation = "https://the-hub-of-heliopolis.readthedocs.io"
+homepage = "https://github.com/P403n1x87/the-hub-of-heliopolis"
+keywords = []
+license = "GPL-3.0-or-later"
+name = "the-hub-of-heliopolis"
+package-mode = false
+readme = "README.md"
+repository = "https://github.com/P403n1x87/the-hub-of-heliopolis"
+version = "0.1.0"
 
 [tool.poetry.dependencies]
-python = ">=3.6"
-pelican = {extras = ["markdown"], version = "^4.5.0"}
-pygments = "^2.6.1"
-invoke = "^1.4.1"
+invoke = "^3.0"
+pelican = {extras = ["markdown"], version = "^4.12"}
+pygments = "^2.6"
+python = ">=3.12"
 
 [build-system]
-requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
+requires = ["poetry>=0.12"]
