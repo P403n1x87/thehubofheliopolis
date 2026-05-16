@@ -9,7 +9,7 @@ jobs:
         with:
           python-version: 3.12
       - name: Checkout 🛎️
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           submodules: 'recursive'
 
@@ -20,9 +20,10 @@ jobs:
           poetry run invoke build
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+        uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
           branch: master
           folder: output
           repository-name: P403n1x87/P403n1x87.github.io
           token: ${{ secrets.GH_PAGES_TOKEN }}
+          clean: false
