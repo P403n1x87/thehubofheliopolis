@@ -31,6 +31,9 @@ what was inside and understand how they worked.
     </li>
 		<li class="event" data-date="2019">
       <p>🇮🇹 + 🇬🇧 British naturalisation<p/>
+    </li>
+		<li class="event" data-date="2025">
+      <p>🧑‍💻 Upgrade to Staff Engineer<p/>
 			<br/>
     </li>
 
