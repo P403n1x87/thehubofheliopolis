@@ -40,14 +40,11 @@ code {
   border-radius: 4px;
   color: #a3b3c3;
   padding: 2px 6px;
-  background-color: rgb(65, 70, 87, .33);
   font-style: normal;
-  font-size: small;
 }
 
 .highlight pre {
   font-family: "Ubuntu Mono", Meslo, Consolas, monospace;
-  font-size: small;
   padding-left: 1em;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -188,7 +185,7 @@ h1 {
 .center-image + em {
   padding: 1em;
   display: block;
-  font-size: small;
+  font-size: 90%;
   text-align: center;
   color: #878a90;
 }
