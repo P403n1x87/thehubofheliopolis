@@ -22,7 +22,7 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
-          branch: master
+          branch: gh-pages
           folder: output
           repository-name: P403n1x87/P403n1x87.github.io
           token: ${{ secrets.GH_PAGES_TOKEN }}
