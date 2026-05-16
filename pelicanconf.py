@@ -34,7 +34,6 @@ SOCIAL = [
     ("linkedin", "https://www.linkedin.com/in/gabriele-tornetta-b2733759"),
     ("stack-exchange", "https://stackexchange.com/users/528399/phoenix87"),
     ("steam", "https://steamcommunity.com/profiles/76561198092800937"),
-    ("twitter", "https://twitter.com/p403n1x87"),
     ("wikipedia-w", "https://en.wikipedia.org/wiki/User:Gabriele_Nunzio_Tornetta"),
 ]
 
