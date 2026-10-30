@@ -1,131 +1,105 @@
 {% extends "base.html" %}
 {% block html_lang %}{{ article.lang }}{% endblock %}
 
-{% block title %}{{ SITENAME }} - {{ article.title|striptags  }}{% endblock %}
+{% block title %}{{ SITENAME }} - {{ article.title|striptags }}{% endblock %}
 
 {% block head %}
   {{ super() }}
-  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/pygment.css" />
-  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/article.css" />
-  {% import 'translations.html' as translations with context %}
-  {% if translations.entry_hreflang(article) %}
-    {{ translations.entry_hreflang(article) }}
-  {% endif %}
-
   {% if article.description %}
-    <meta name="description" content="{{article.description}}" />
+  <meta name="description" content="{{ article.description }}" />
   {% endif %}
-
   {% for tag in article.tags %}
-    <meta name="tags" content="{{tag}}" />
+  <meta name="tags" content="{{ tag }}" />
   {% endfor %}
 {% endblock %}
 
-{% block heading %}
-  <header class="post-info relative">
-    <div id="heading-bg" style="background-image: url({% if article.art %}images/{{ article.art }}{% else %}theme/images/default_art.png{% endif %});"></div>
-    <div id="heading-info" class="absolute bottom-0 p-4 w-full bg-opacity-50 bg-black">
-      <h1 class="entry-title">{{ article.title }}</h1>
-    {% import 'translations.html' as translations with context %}
-    {{ translations.translations_for(article) }}
-      <div class="py-1 text-xs">
-        <time class="published py-1" datetime="{{ article.date.isoformat() }}">
-          &#128197; {{ article.locale_date }}
-        </time>
+{% block body_class %}article{% endblock %}
+
+{% block cwd %}<a href="{{ SITEURL }}/">~</a>/<a href="{{ SITEURL }}/archives.html">posts</a>/{{ article.slug }}{% endblock %}
+
+{% block window %}less{% endblock %}
+
+{% block main %}
+<div class="with-aside">
+  <aside class="aside">
+    {%- if article.toc %}
+    <details class="toc" id="toc">
+      <summary>{{ article.slug }}.md</summary>
+      {{ article.toc }}
+    </details>
+    <script>
+      if (matchMedia("(min-width: 1000px)").matches) document.getElementById("toc").open = true;
+    </script>
+    {%- endif -%}
+  </aside>
+
+  <article class="article">
+    <header class="article-header">
+      <p class="cmd"><span class="ps1">$</span> cat {{ article.slug }}.md</p>
+      <h1 class="article-title">{{ article.title }}</h1>
+      <p class="meta">
+        <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
         {% if article.modified %}
-        <time class="modified py-1" datetime="{{ article.modified.isoformat() }}">
-          {{ article.locale_modified }}
-        </time>
+        <span>updated <time datetime="{{ article.modified.isoformat() }}">{{ article.locale_modified }}</time></span>
         {% endif %}
-        {% if SHOW_AUTHORS and article.authors %}
-        <address class="vcard author py-1 inline">
-          By {% for author in article.authors %}
-              <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
-            {% endfor %}
-        </address>
-        {% endif %}
-        <span class="readtime py-1">&#9202; A {{ article.readtime.minutes }} min read</span>
-        {% if article.github %}
-        <span id="github">
-          <i class="fa fa-github" aria-hidden="true"></i>
-          <a href="https://github.com/{{ article.github }}" target="_blank">
-            {{ article.github|replace('/tree/master', '') }}
-          </a>
-        </span>
-        {% endif %}
-      </div>
-
-      <div class="py-1 text-xs">
+        <span>{{ article.readtime.minutes }} min read</span>
         {% if article.category %}
-        <span class="category py-1">
-            &#128451; <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
-        </span>
+        <a class="cat" href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category|lower }}/</a>
         {% endif %}
-        {% if article.tags %}
-        <span class="tags py-1">
-          &#127991;
-          {% for tag in article.tags %}
-            <a class="tag" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
-          {% endfor %}
-        </span>
+        {% for tag in article.tags %}
+        <a class="tag" href="{{ SITEURL }}/{{ tag.url }}">#{{ tag }}</a>
+        {% endfor %}
+        {% if article.github %}
+        <a href="https://github.com/{{ article.github }}" target="_blank" rel="noopener">github:{{ article.github|replace('/tree/master', '') }}</a>
         {% endif %}
-      </div>
+      </p>
+    </header>
+
+    <div class="lead">
+      {{ article.summary }}
     </div>
-  </header>
-{% endblock %}
 
-{% block sidepane %}
-<footer class="post-info text-sm">
-  <div id="sidebar_toc" class="py-2" />
-</footer><!-- /.post-info -->
+    <div class="entry-content">
+      {{ article.content }}
+    </div>
 
-<script type="text/javascript">
-  window.onload = function() {
-    toc = document.getElementsByClassName('toc')[0];
-    document.getElementById("sidebar_toc").innerHTML = toc.innerHTML;
-    toc.parentNode.removeChild(toc)
+    <footer class="article-footer">
+      {% if article.prev_article or article.next_article %}
+      <nav class="neighbors" aria-label="More posts">
+        {% if article.prev_article %}
+        <a class="neighbor prev" rel="prev" href="{{ SITEURL }}/{{ article.prev_article.url }}">
+          <span class="label">$ cd ../older</span>
+          {{ article.prev_article.title }}
+        </a>
+        {% endif %}
+        {% if article.next_article %}
+        <a class="neighbor next" rel="next" href="{{ SITEURL }}/{{ article.next_article.url }}">
+          <span class="label">$ cd ../newer</span>
+          {{ article.next_article.title }}
+        </a>
+        {% endif %}
+      </nav>
+      {% endif %}
 
-    document.querySelectorAll('.entry-content img').forEach(function(img) {
-      if (img.parentElement.tagName !== 'A') {
-        var a = document.createElement('a');
-        a.href = img.src;
-        a.target = '_blank';
-        a.rel = 'noopener';
-        img.parentNode.insertBefore(a, img);
-        a.appendChild(img);
-      }
-    });
-  }
-</script>
-{% endblock %}
-
-{% block content %}
-<section id="content" class="body">
-  <div id="summary" class="py-0">
-    {{ article.summary }}
-  </div>
-
-
-  <div class="entry-content">
-    {{ article.content }}
-  </div><!-- /.entry-content -->
-</section>
-
-<div id="giscus" class="py-8">
-  <script src="https://giscus.app/client.js"
-          data-repo="p403n1x87/P403n1x87.github.io"
-          data-repo-id="MDEwOlJlcG9zaXRvcnk3ODkzNzQ0Ng=="
-          data-category="Giscus"
-          data-category-id="DIC_kwDOBLR9Zs4C9NXy"
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="bottom"
-          data-theme="transparent_dark"
-          data-lang="en"
-          crossorigin="anonymous"
-          async>
-  </script>
+      <section class="comments">
+        <p class="cmd"><span class="ps1">$</span> cat comments.log</p>
+        <script src="https://giscus.app/client.js"
+                data-repo="p403n1x87/P403n1x87.github.io"
+                data-repo-id="MDEwOlJlcG9zaXRvcnk3ODkzNzQ0Ng=="
+                data-category="Giscus"
+                data-category-id="DIC_kwDOBLR9Zs4C9NXy"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="transparent_dark"
+                data-lang="en"
+                crossorigin="anonymous"
+                async>
+        </script>
+      </section>
+    </footer>
+  </article>
 </div>
 {% endblock %}

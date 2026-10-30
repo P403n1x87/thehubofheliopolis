@@ -92,6 +92,12 @@ def build(c):
 
 
 @task
+def test(c):
+    """Build the site and check the output"""
+    c.run("pytest")
+
+
+@task
 def rebuild(c):
     """`build` with the delete switch"""
     pelican_run("-d -s {settings_base}".format(**CONFIG))

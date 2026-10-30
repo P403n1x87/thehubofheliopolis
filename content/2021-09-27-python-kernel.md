@@ -110,5 +110,5 @@ available from ordinary releases too!
 [procfs]: https://man7.org/linux/man-pages/man5/proc.5.html
 [sklearn]: https://scikit-learn.org/stable/
 [twitter]: https://twitter.com/p403n1x87
-[vscode]: [https://marketplace.visualstudio.com/items?itemName=p403n1x87.austin-vscode]
+[vscode]: https://marketplace.visualstudio.com/items?itemName=p403n1x87.austin-vscode
 [dev]: https://github.com/P403n1x87/austin/releases/tag/dev
