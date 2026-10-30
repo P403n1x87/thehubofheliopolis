@@ -471,10 +471,55 @@ check that the fix worked. There are two ways to set this up:
   functions, call stacks, `asyncio` task traces, GC activity and metadata. It
   works with GitHub Copilot's agent mode with no setup, and with Claude Code,
   Cursor or any other MCP client after running a single command.
-- **`austin-query`**, from the [austin-python] package, answers the same
-  questions from the command line, as text tables or JSON. Any agent that can
-  run shell commands can use it, in a terminal, a script or CI. Pointing the
-  agent at `austin-query --help` is usually all the setup it needs.
+- The [austin-python] package has a **query API** that answers the same
+  questions in plain Python, and a command-line front-end for it,
+  `austin-query`, that prints the results as text tables or JSON. Any agent
+  that can run shell commands can use it, in a terminal, a script or CI.
+  Pointing the agent at `austin-query --help` is usually all the setup it needs.
+
+The command line is a good place to start, but agents get more out of the
+[Python API][query-api] behind it. Each query returns typed objects rather than
+text, so the agent can write a short script that hands them over to other
+libraries: pandas to compare two profiles, a plotting library to chart the
+results, or the project's own code to work out which component owns each hot
+function. An analysis that would take a long chain of CLI calls, each one
+reading the profile again, becomes a few lines of Python over a profile loaded
+once. The selectors and filters are the same as on the command line, e.g.
+`q.filter(thread="main").callers("db.py:execute")`, so the agent can move from
+one to the other without learning anything new. For example, this is all it
+takes to see which functions got faster, or slower, after a fix:
+
+```python
+import pandas as pd
+from austin.query import ProfileQuery
+
+def hot(path):
+    return pd.Series({
+        f"{e.location.filename}:{e.location.function}": e.own_pct
+        for e in ProfileQuery.from_file(path).top(50)
+    })
+
+change = hot("after.mojo").sub(hot("before.mojo"), fill_value=0)
+print(change.sort_values().to_string())
+```
+
+A word of caution, though: a single pair of profiles is a shaky basis for a
+verdict. Sampling, and the system itself, add noise from one run to the next,
+so part of the change above could be nothing more than that. For a rigorous
+answer, [pyrometry] is a small library of mine that implements the ideas of
+[On the Algebraic Properties of Flame Graphs][flamegraph-algebra]. It treats
+flame graphs as vectors that can be added, subtracted and averaged, and it
+compares two *sets* of profiles, say five runs before a change and five after,
+with a statistical test (Hotelling's T²), keeping only the stacks whose
+difference is significant. The result is then split into the stacks that
+appeared, disappeared, grew or shrank. That's out of reach for a chain of CLI
+calls, but it's a short script for an agent with the Python API, and pointing
+it at pyrometry gives it a sound method to follow instead of eyeballing two
+flame graphs. Nor is this just theory: Austin's own CI uses the same test to
+validate every pull request. It profiles the same scenarios ten times with the
+base branch and ten times with the changes, on every supported version of
+Python, and checks that the new build still reports the same data as the old
+one.
 
 **Or let it teach you.** Having an agent fix things for you is useful, but it
 doesn't make you any better at reading a profile. So the MCP server also has
@@ -583,6 +628,9 @@ more detail. If you try it, I'd love to hear how it goes.
 
 [VS Code extension]: https://marketplace.visualstudio.com/items?itemName=p403n1x87.austin-vscode
 [austin-python]: https://github.com/P403n1x87/austin-python
+[query-api]: https://austin-python.readthedocs.io/en/latest/query.html
+[pyrometry]: https://github.com/P403n1x87/pyrometry
+[flamegraph-algebra]: https://arxiv.org/abs/2301.08941
 [deterministic-statistical]: {filename}2019-05-05-python-profiling.md
 [austinp-post]: {filename}2021-09-27-python-kernel.md
 [accuracy-post]: {filename}2021-12-17-austin-accuracy.md
