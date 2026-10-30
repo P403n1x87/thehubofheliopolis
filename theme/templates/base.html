@@ -12,9 +12,6 @@
   {% if CATEGORY_FEED_ATOM and category %}
   <link href="{{ FEED_DOMAIN }}/{% if CATEGORY_FEED_ATOM_URL %}{{ CATEGORY_FEED_ATOM_URL.format(slug=category.slug) }}{% else %}{{ CATEGORY_FEED_ATOM.format(slug=category.slug) }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed" />
   {% endif %}
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" />
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/terminal.css" />
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygment.css" />
   <script src="{{ SITEURL }}/theme/js/terminal.js" defer></script>
@@ -50,18 +47,14 @@
       <a href="{{ link }}" rel="me noopener" target="_blank">{{ name }}</a>
     {% endfor %}
       <a href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}">rss</a>
+      <a href="{{ SITEURL }}/pages/privacy.html">privacy</a>
     </nav>
     <span class="status-right">{{ AUTHOR }} &middot; built with <a href="https://getpelican.com/">pelican</a></span>
   </footer>
 
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-104560783-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+  {% if GOATCOUNTER %}
+  <script data-goatcounter="https://{{ GOATCOUNTER }}.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+  {% endif %}
 </body>
 </html>

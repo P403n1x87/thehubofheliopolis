@@ -21,4 +21,6 @@ DELETE_OUTPUT_DIRECTORY = True
 # Following items are often useful when publishing
 
 #DISQUS_SITENAME = ""
-#GOOGLE_ANALYTICS = ""
+
+# GoatCounter site code, i.e. the "<code>" in https://<code>.goatcounter.com
+GOATCOUNTER = 'thehubofheliopolis'
