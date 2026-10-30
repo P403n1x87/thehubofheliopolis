@@ -1,86 +1,58 @@
 {% extends "base.html" %}
 
-{% block head %}
-  {{ super() }}
-  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/index.css" />
-{% endblock %}
+{% block body_class %}listing{% endblock %}
 
-{% block heading %}
-<div class="flex">
-  <img src="{{ SITEURL }}/theme/images/logo_bg.svg"
-       width="160px"
-       class="block mx-auto flex-none"/>
-  <pre class="flex-auto p-8">
+{% block main %}
+<div class="single">
+  {% block motd %}
+  {% if articles_page.number == 1 %}
+  <section class="motd">
+    <p class="cmd"><span class="ps1">$</span> cat /etc/motd</p>
+    <div class="motd-art">
+      <img class="motd-logo" src="{{ SITEURL }}/theme/images/logo_bg.svg" alt="" width="96" height="95" />
+      <pre class="ascii" aria-label="Welcome">
  _    _      _
 | |  | |    | |
 | |  | | ___| | ___ ___  _ __ ___   ___
 | |/\| |/ _ \ |/ __/ _ \| '_ ` _ \ / _ \
 \  /\  /  __/ | (_| (_) | | | | | |  __/
- \/  \/ \___|_|\___\___/|_| |_| |_|\___|
-  </pre>
-</div>
-{% endblock %}
-
-{% block sidepane %}
-  {% include 'sidepane.html' %}
-{% endblock %}
-
-{% block content %}
-<section id="content">
-  {% block content_title %}
-  <h2>All articles</h2>
+ \/  \/ \___|_|\___\___/|_| |_| |_|\___|</pre>
+    </div>
+    <p class="motd-text"><strong>{{ SITENAME }}</strong> &mdash; {{ SITESUBTITLE }}</p>
+  </section>
+  {% endif %}
   {% endblock %}
 
-  <ol id="post-list">
-  {% for article in articles_page.object_list %}
-    <li class="py-2"><article class="hentry">
-      <header>
-        <h3 class="entry-title py-2">
-          <a href="{{ SITEURL }}/{{ article.url }}"
-             rel="bookmark"
-             title="Permalink to {{ article.title|striptags }}">
-            <span class="text-green-500">&#10097</span> {{ article.title }}
-          </a>
-        </h3>
-      </header>
-      <footer class="post-info text-xs text-gray-500">
-        <time class="published"
-              datetime="{{ article.date.isoformat() }}">
-              &#128197; {{ article.locale_date }}
-        </time>
-        {% if SHOW_AUTHORS %}
-        <address class="vcard author inline">&#128395;
-        {% for author in article.authors %}
-          <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
-        {% endfor %}
-        {% endif %} <!-- SHOW_AUTHORS -->
-        </address>
-        <span class="readtime">&#9202; A {{ article.readtime.minutes }} min read</span>
-        {% if article.github %}
-        <span id="github">
-          <i class="fa fa-github" aria-hidden="true"></i>
-          <a href="https://github.com/{{ article.github }}" target="_blank">
-            {{ article.github|replace('/tree/master', '') }}
-          </a>
-        </span>
-        {% endif %}
-      </footer><!-- /.post-info -->
-      <div class="entry-content py-2">
-        {{ article.summary }}
-      </div><!-- /.entry-content -->
-      <div class="text-xs text-gray-500">
-          &#128451; <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
-          &#127991; {% for tag in article.tags|sort %}
-          <a class="tag" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
-            <!-- <span class="rounded text-gray-700 bg-blue-300 p-1">{{ tag }}</span> -->
-          {% endfor %}
-      </div>
-    </article></li>
-  {% endfor %}
-  </ol><!-- /#posts-list -->
+  <section class="listing">
+    <p class="cmd"><span class="ps1">$</span> {% block listing_cmd %}ls -lt posts/{% endblock %}</p>
 
-  {% if articles_page.has_other_pages() %}
-    {% include 'pagination.html' %}
-  {% endif %}
-</section><!-- /#content -->
-{% endblock content %}
+    {% for year, group in articles_page.object_list|groupby('date.year')|reverse %}
+    <h2 class="year">{{ year }}</h2>
+    <ol class="post-list">
+    {% for article in group %}
+      <li class="post">
+        <time class="post-date" datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%b %d') }}</time>
+        <span class="post-time" title="{{ article.readtime.minutes }} min read">{{ article.readtime.minutes }}m</span>
+        <div class="post-body">
+          <h3 class="post-title">
+            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark">{{ article.title }}</a>
+          </h3>
+          <div class="post-summary">{{ article.summary }}</div>
+          <p class="post-tags">
+            <a class="cat" href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category|lower }}/</a>
+            {% for tag in article.tags|sort %}
+            <a class="tag" href="{{ SITEURL }}/{{ tag.url }}">#{{ tag }}</a>
+            {% endfor %}
+          </p>
+        </div>
+      </li>
+    {% endfor %}
+    </ol>
+    {% endfor %}
+
+    {% if articles_page.has_other_pages() %}
+      {% include 'pagination.html' %}
+    {% endif %}
+  </section>
+</div>
+{% endblock main %}

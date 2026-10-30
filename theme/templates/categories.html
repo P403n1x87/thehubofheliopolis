@@ -2,11 +2,15 @@
 
 {% block title %}{{ SITENAME }} - Categories{% endblock %}
 
+{% block cwd %}<a href="{{ SITEURL }}/">~</a>/categories{% endblock %}
+
+{% block window %}categories{% endblock %}
+
 {% block content %}
-    <h1>Categories on {{ SITENAME }}</h1>
-    <ul>
-    {% for category, articles in categories|sort %}
-        <li><a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a> ({{ articles|count }})</li>
-    {% endfor %}
-    </ul>
+<p class="cmd"><span class="ps1">$</span> ls -l categories/</p>
+<ul class="ls-l">
+{% for category, articles in categories|sort %}
+  <li><span class="count">{{ articles|count }}</span> <a class="cat" href="{{ SITEURL }}/{{ category.url }}">{{ category|lower }}/</a></li>
+{% endfor %}
+</ul>
 {% endblock %}

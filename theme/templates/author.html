@@ -2,7 +2,8 @@
 
 {% block title %}{{ SITENAME }} - Articles by {{ author }}{% endblock %}
 
-{% block content_title %}
-<h2>Articles by {{ author }}</h2>
-{% endblock %}
+{% block cwd %}<a href="{{ SITEURL }}/">~</a>/<a href="{{ SITEURL }}/authors.html">authors</a>/{{ author.slug }}{% endblock %}
 
+{% block motd %}{% endblock %}
+
+{% block listing_cmd %}ls -lt authors/{{ author.slug }}/{% endblock %}

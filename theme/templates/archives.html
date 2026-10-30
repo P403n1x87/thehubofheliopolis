@@ -2,13 +2,11 @@
 
 {% block title %}{{ SITENAME }} - Archives{% endblock %}
 
-{% block content %}
-<h1>Archives for {{ SITENAME }}</h1>
+{% block cwd %}<a href="{{ SITEURL }}/">~</a>/posts{% endblock %}
 
-<dl>
-{% for article in dates %}
-    <dt>{{ article.locale_date }}</dt>
-    <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
-{% endfor %}
-</dl>
+{% block window %}posts{% endblock %}
+
+{% block content %}
+<p class="cmd"><span class="ps1">$</span> ls -lt posts/</p>
+{% include '_post_rows.html' %}
 {% endblock %}

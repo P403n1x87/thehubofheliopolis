@@ -2,6 +2,10 @@
 
 {% block title %}{{ SITENAME }} - {{ tag }} tag{% endblock %}
 
-{% block content_title %}
-<h2>Articles tagged with {{ tag }}</h2>
-{% endblock %}
+{% block cwd %}<a href="{{ SITEURL }}/">~</a>/<a href="{{ SITEURL }}/tags.html">tags</a>/{{ tag.slug }}{% endblock %}
+
+{% block window %}tags{% endblock %}
+
+{% block motd %}{% endblock %}
+
+{% block listing_cmd %}ls -lt tags/{{ tag.slug }}/{% endblock %}

@@ -13,11 +13,16 @@ jobs:
         with:
           submodules: 'recursive'
 
-      - name: Install and Build 🔧
+      - name: Install 📦
         run: |
           pip install poetry
           poetry update
-          poetry run invoke build
+
+      - name: Test 🧪
+        run: poetry run pytest
+
+      - name: Build 🔧
+        run: poetry run invoke build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.5.0

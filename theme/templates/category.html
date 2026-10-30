@@ -2,7 +2,10 @@
 
 {% block title %}{{ SITENAME }} - {{ category }} category{% endblock %}
 
-{% block content_title %}
-<h2>Articles in the {{ category }} category</h2>
-{% endblock %}
+{% block cwd %}<a href="{{ SITEURL }}/">~</a>/<a href="{{ SITEURL }}/categories.html">categories</a>/{{ category.slug }}{% endblock %}
 
+{% block window %}categories{% endblock %}
+
+{% block motd %}{% endblock %}
+
+{% block listing_cmd %}ls -lt categories/{{ category.slug }}/{% endblock %}

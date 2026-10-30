@@ -2,11 +2,15 @@
 
 {% block title %}{{ SITENAME }} - Tags{% endblock %}
 
+{% block cwd %}<a href="{{ SITEURL }}/">~</a>/tags{% endblock %}
+
+{% block window %}tags{% endblock %}
+
 {% block content %}
-    <h1>Tags for {{ SITENAME }}</h1>
-    <ul>
-    {% for tag, articles in tags|sort %}
-        <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a> ({{ articles|count }})</li>
-    {% endfor %}
-    </ul>
+<p class="cmd"><span class="ps1">$</span> ls -l tags/ | sort -k2</p>
+<ul class="ls-l ls-columns">
+{% for tag, articles in tags|sort %}
+  <li><span class="count">{{ articles|count }}</span> <a class="tag" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}/</a></li>
+{% endfor %}
+</ul>
 {% endblock %}

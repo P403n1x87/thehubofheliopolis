@@ -1,0 +1,15 @@
+{# Compact `ls -l` rows for `dates`, grouped by year. #}
+{% for year, group in dates|groupby('date.year')|reverse %}
+<h2 class="year">{{ year }}</h2>
+<ol class="post-list compact">
+{% for article in group %}
+  <li class="post">
+    <time class="post-date" datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%b %d') }}</time>
+    <span class="post-time" title="{{ article.readtime.minutes }} min read">{{ article.readtime.minutes }}m</span>
+    <div class="post-body">
+      <a class="post-title" href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+    </div>
+  </li>
+{% endfor %}
+</ol>
+{% endfor %}

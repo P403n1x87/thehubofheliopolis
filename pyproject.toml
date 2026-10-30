@@ -36,10 +36,17 @@ repository = "https://github.com/P403n1x87/the-hub-of-heliopolis"
 version = "0.1.0"
 
 [tool.poetry.dependencies]
+beautifulsoup4 = "^4.12"
 invoke = "^3.0"
 pelican = {extras = ["markdown"], version = "^4.12"}
 pygments = "^2.6"
 python = ">=3.12"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
 [build-system]
 build-backend = "poetry.masonry.api"

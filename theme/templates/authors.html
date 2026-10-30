@@ -2,11 +2,13 @@
 
 {% block title %}{{ SITENAME }} - Authors{% endblock %}
 
+{% block cwd %}<a href="{{ SITEURL }}/">~</a>/authors{% endblock %}
+
 {% block content %}
-    <h1>Authors on {{ SITENAME }}</h1>
-    <ul>
-    {% for author, articles in authors|sort %}
-        <li><a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a> ({{ articles|count }})</li>
-    {% endfor %}
-    </ul>
+<p class="cmd"><span class="ps1">$</span> ls -l authors/</p>
+<ul class="ls-l">
+{% for author, articles in authors|sort %}
+  <li><span class="count">{{ articles|count }}</span> <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}/</a></li>
+{% endfor %}
+</ul>
 {% endblock %}

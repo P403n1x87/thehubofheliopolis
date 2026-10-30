@@ -2,13 +2,11 @@
 
 {% block title %}{{ SITENAME }} - {{ period | reverse | join(' ') }} archives{% endblock %}
 
-{% block content %}
-<h1>Archives for {{ period | reverse | join(' ') }}</h1>
+{% block cwd %}<a href="{{ SITEURL }}/">~</a>/<a href="{{ SITEURL }}/archives.html">posts</a>/{{ period | join('/') }}{% endblock %}
 
-<dl>
-{% for article in dates %}
-    <dt>{{ article.locale_date }}</dt>
-    <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
-{% endfor %}
-</dl>
+{% block window %}posts{% endblock %}
+
+{% block content %}
+<p class="cmd"><span class="ps1">$</span> ls -lt posts/{{ period | join('/') }}/</p>
+{% include '_post_rows.html' %}
 {% endblock %}
