@@ -156,6 +156,8 @@ def reserve(c):
 def preview(c):
     """Build production version of site"""
     pelican_run("-s {settings_publish}".format(**CONFIG))
+    # Generate redirects after the build, as DELETE_OUTPUT_DIRECTORY wipes them.
+    generate_redirects()
 
 
 @task

@@ -32,7 +32,7 @@ jobs:
         run: poetry run pytest
 
       - name: Build 🔧
-        run: poetry run invoke build
+        run: poetry run invoke preview
 
       # Pull requests are only tested and built; only master is published.
       - name: Deploy 🚀
