@@ -53,7 +53,7 @@ RELATIVE_URLS = True
 
 # Plugins
 PLUGIN_PATHS = ["./plugins", "./theme/plugins"]
-PLUGINS = ["render_math", "readtime", "extract_toc", "neighbors", "figures"]
+PLUGINS = ["render_math", "readtime", "extract_toc", "neighbors", "figures", "revisions"]
 
 MARKDOWN = {
     "extension_configs": {
