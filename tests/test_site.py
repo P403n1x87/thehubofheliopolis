@@ -34,7 +34,8 @@ def test_internal_links_resolve(site, pages):
                     continue
 
                 target, _, fragment = url.partition("#")
-                resolved = (page.parent / unquote(target)).resolve() if target else page.resolve()
+                target = target.partition("?")[0]
+                resolved =(page.parent / unquote(target)).resolve() if target else page.resolve()
                 if resolved.is_dir():
                     resolved = resolved / "index.html"
 
@@ -44,6 +45,18 @@ def test_internal_links_resolve(site, pages):
                     broken.append(f"{path}: {url} (no such anchor)")
 
     assert not broken, "\n".join(broken)
+
+
+def test_theme_assets_are_versioned(pages):
+    unversioned = []
+    for path, soup in pages.items():
+        for tag, attr in (("link", "href"), ("script", "src")):
+            for element in soup.find_all(tag):
+                url = element.get(attr)
+                if url and "/theme/" in url and "?v=" not in url:
+                    unversioned.append(f"{path}: {url}")
+
+    assert not unversioned, "\n".join(unversioned)
 
 
 def test_articles_show_read_time(articles):
