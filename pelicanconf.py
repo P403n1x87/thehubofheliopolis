@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 
+import hashlib
 import os
 import os.path
 
@@ -10,6 +11,21 @@ SITESUBTITLE = "notes on technology and my experiments with it."
 PROMPT = "p403n1x87@heliopolis"
 SITEURL = "https://p403n1x87.github.io"
 THEME = os.path.abspath("./theme")
+
+
+def _assets_version(*dirs):
+    """A short hash of the theme's static assets, so that their URLs change
+    whenever they do and browsers don't keep serving stale copies."""
+    digest = hashlib.sha256()
+    for d in dirs:
+        for root, _, files in sorted(os.walk(os.path.join(THEME, "static", d))):
+            for name in sorted(files):
+                with open(os.path.join(root, name), "rb") as f:
+                    digest.update(f.read())
+    return digest.hexdigest()[:10]
+
+
+ASSETS_VERSION = _assets_version("css", "js")
 
 PATH = "content"
 

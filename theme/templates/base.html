@@ -12,9 +12,9 @@
   {% if CATEGORY_FEED_ATOM and category %}
   <link href="{{ FEED_DOMAIN }}/{% if CATEGORY_FEED_ATOM_URL %}{{ CATEGORY_FEED_ATOM_URL.format(slug=category.slug) }}{% else %}{{ CATEGORY_FEED_ATOM.format(slug=category.slug) }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed" />
   {% endif %}
-  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/terminal.css" />
-  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygment.css" />
-  <script src="{{ SITEURL }}/theme/js/terminal.js" defer></script>
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/terminal.css?v={{ ASSETS_VERSION }}" />
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygment.css?v={{ ASSETS_VERSION }}" />
+  <script src="{{ SITEURL }}/theme/js/terminal.js?v={{ ASSETS_VERSION }}" defer></script>
   {% endblock head %}
 </head>
 
