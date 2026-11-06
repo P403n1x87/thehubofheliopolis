@@ -5,6 +5,7 @@ Category: Programming
 Tags:     python, profiling, optimisation
 art:      bust-perf-issues/austin_sign.png
 pic:      state-of-python-profiling
+Revisions: 2026-11-06: Tachyon's documentation now acknowledges Austin and the other external profilers ([gh-161445](https://github.com/python/cpython/pull/161445)).
 Summary:  CPython now ships its own sampling profiler, free-threading is going mainstream, and coding agents have started reading profiles. In this post I look at where Python profiling stands today, compare Tachyon, py-spy, Scalene and Austin, and go through what's new in Austin 4.1.
 
 Python profiling has changed more in the last two years than in the decade
@@ -230,6 +231,17 @@ with good ideas spreading between projects. What's missing is the credit. PEP
 approach Tachyon adopts. I think that's a missed opportunity to recognise the
 years of community work that came before the standard library caught up, and
 that made it possible.
+{: data-revision="2026-11-06" }
+
+Since this post was first published, the core developers have added an
+acknowledgement to Tachyon's documentation and to What's New in Python 3.15
+([gh-161445]), recognising Austin, py-spy, Pyflame and rbspy, and thanking
+"their authors and the wider profiling community for their work and ideas".
+Thank you! It's a small paragraph, but it means a lot to everyone who spent
+years building these tools before the standard library caught up.
+{: .revision-update }
+
+[gh-161445]: https://github.com/python/cpython/pull/161445
 
 
 # py-spy: The Established Choice
