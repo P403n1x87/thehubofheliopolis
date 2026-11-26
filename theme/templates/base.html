@@ -15,6 +15,9 @@
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/terminal.css?v={{ ASSETS_VERSION }}" />
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygment.css?v={{ ASSETS_VERSION }}" />
   <script src="{{ SITEURL }}/theme/js/terminal.js?v={{ ASSETS_VERSION }}" defer></script>
+  {% if GOATCOUNTER %}
+  <meta name="goatcounter" content="https://{{ GOATCOUNTER }}.goatcounter.com" data-posts="{{ articles|length }}" />
+  {% endif %}
   {% endblock head %}
 </head>
 

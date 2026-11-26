@@ -100,3 +100,13 @@ def test_images_link_to_full_size(articles):
         if img.parent.name != "a"
     ]
     assert not unlinked, "\n".join(unlinked)
+
+
+def test_articles_have_view_counters(articles):
+    missing = []
+    for path, soup in articles.items():
+        counter = soup.select_one(".meta [data-views][data-views-total]")
+        if counter is None or counter["data-views"] != f"/{path}" or not counter.has_attr("hidden"):
+            missing.append(path)
+
+    assert not missing, "\n".join(missing)

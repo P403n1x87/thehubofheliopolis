@@ -37,12 +37,16 @@
     <header class="article-header">
       <p class="cmd"><span class="ps1">$</span> cat {{ article.slug }}.md</p>
       <h1 class="article-title">{{ article.title }}</h1>
-      <p class="meta">
+      <p class="meta meta-info">
         <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
         {% if article.modified %}
         <span>{% if article.revisions %}<a href="#revisions">updated</a>{% else %}updated{% endif %} <time datetime="{{ article.modified.isoformat() }}">{{ article.locale_modified }}</time></span>
         {% endif %}
         <span>{{ article.readtime.minutes }} min read</span>
+        <span class="views" data-views="/{{ article.url }}" data-views-total hidden></span>
+      </p>
+      {% if article.category or article.tags or article.github %}
+      <p class="meta">
         {% if article.category %}
         <a class="cat" href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category|lower }}/</a>
         {% endif %}
@@ -53,6 +57,7 @@
         <a href="https://github.com/{{ article.github }}" target="_blank" rel="noopener">github:{{ article.github|replace('/tree/master', '') }}</a>
         {% endif %}
       </p>
+      {% endif %}
     </header>
 
     <div class="lead">
