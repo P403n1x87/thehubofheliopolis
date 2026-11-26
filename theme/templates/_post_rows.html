@@ -8,6 +8,7 @@
     <span class="post-time" title="{{ article.readtime.minutes }} min read">{{ article.readtime.minutes }}m</span>
     <div class="post-body">
       <a class="post-title" href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+      <span class="views" data-views="/{{ article.url }}" hidden></span>
     </div>
   </li>
 {% endfor %}

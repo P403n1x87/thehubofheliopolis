@@ -17,7 +17,10 @@ and screen size, and the country (derived from the IP address, which is not
 stored). See the [GoatCounter privacy policy](https://www.goatcounter.com/help/privacy)
 for the details.
 
-If you block it, nothing on this site will break.
+The view counts shown next to posts are fetched from GoatCounter's public
+counter API, so your browser also talks to goatcounter.com to display them.
+
+If you block it, nothing on this site will break; the counts simply won't show.
 
 
 ### Comments
